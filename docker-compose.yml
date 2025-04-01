@@ -1,0 +1,24 @@
+services:
+  # Nombre del servicio (puedes llamarlo como quieras, ej: frontend, angular-app)
+  my-fitness-diary-dev-fe:
+    # Configuración de la construcción de la imagen
+    build:
+      context: . # Directorio donde está el Dockerfile
+      dockerfile: Dockerfile.dev # O Dockerfile.dev si lo nombraste así
+      target: development # Especifica el stage si usas multi-stage Dockerfile
+    # Nombre del contenedor (opcional, pero útil para identificarlo)
+    container_name: mfd-dev-fe-container
+    # Mapeo de puertos: [Puerto en tu máquina]:[Puerto en el contenedor]
+    ports:
+      - "4200:4200"
+    # Mapeo de volúmenes: [Directorio en tu máquina]:[Directorio en el contenedor]
+    volumes:
+      # Monta el directorio actual (.) en /app dentro del contenedor
+      - .:/app
+      # Importante: Evita que node_modules de tu máquina sobreescriba el del contenedor.
+      # Crea un volumen anónimo para node_modules dentro del contenedor,
+      # asegurando que se usen los instalados por 'RUN npm install' en el Dockerfile.
+      - /app/node_modules
+    # Mantener el contenedor corriendo (aunque CMD en Dockerfile ya lo hace)
+    # stdin_open: true # Generalmente no necesario para ng serve
+    # tty: true      # Generalmente no necesario para ng serve
