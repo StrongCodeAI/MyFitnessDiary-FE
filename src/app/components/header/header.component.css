@@ -1,12 +1,13 @@
 .header {
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
+  min-height: 93px;
 }
 
 .header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   padding: 0 10px;
   position: relative;
 }
@@ -30,7 +31,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
   z-index: 1;
 }
 
@@ -55,8 +55,8 @@
 }
 
 .settings img {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -70,12 +70,19 @@
 }
 
 .welcome-message h2 {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-family: 'Roboto', sans-serif;
   color: rgba(0, 0, 0, 0.5);
   margin: 0;
 }
 
-.empty-space {
-  width: 36px;
+.header-simple {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-simple .logo {
+  width: 7rem;
+  height: 100%;
 }
