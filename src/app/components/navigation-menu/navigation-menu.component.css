@@ -1,8 +1,6 @@
 .nav-menu {
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  padding: 0.5rem 1rem 0 1rem;
   background-color: var(--background-color);
 }
 
@@ -10,28 +8,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
+  flex: 1;
+  text-align: center;
   padding: 0.5rem;
-  transition: transform 0.2s ease;
-}
-
-.nav-item:hover {
-  transform: scale(1.1);
 }
 
 .nav-icon {
-  width: 27px;
-  height: 27px;
+  width: 24px;
+  height: 24px;
   margin-bottom: 0.25rem;
-  fill: var(--quinary-color);
-  transition: fill 0.2s ease;
-}
-
-.nav-item:hover .nav-icon {
-  fill: var(--primary-color);
+  fill: color-mix(in srgb, var(--quinary-color) 50%, transparent);
 }
 
 .nav-item span {
-  font-size: 0.8rem;
-  color: var(--quinary-color);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
