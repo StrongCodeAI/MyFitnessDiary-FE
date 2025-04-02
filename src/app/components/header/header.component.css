@@ -12,10 +12,6 @@
   position: relative;
 }
 
-.profile-image {
-  width: 50px;
-}
-
 .profile-image img {
   width: 58px;
   height: 58px;
@@ -37,16 +33,14 @@
 .logo {
   width: 42px;
   height: 42px;
-  fill: var(--secondary-color);
   cursor: pointer;
 }
 
 .app-name {
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--secondary-color);
+  color: var(--quinary-color);
   margin: 0;
-  text-align: center;
 }
 
 .settings {
@@ -71,8 +65,7 @@
 
 .welcome-message h2 {
   font-size: 0.8rem;
-  font-family: 'Roboto', sans-serif;
-  color: rgba(0, 0, 0, 0.5);
+  color: color-mix(in srgb, var(--quinary-color) 50%, transparent);
   margin: 0;
 }
 

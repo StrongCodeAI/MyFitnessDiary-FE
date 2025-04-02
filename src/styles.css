@@ -1,13 +1,17 @@
 /* src/styles.css */
 
 :root {
+  --font-family: 'Roboto', sans-serif;
   --primary-color: #BF8709;
-  --secondary-color: #523857;
+  --secondary-color: #EAC57D;
+  --tertiary-color: #B9BBDE;
+  --quaternary-color: #807490;
+  --quinary-color: #523857;
   --background-color: #ffffff;
-  --text-color: #212529;
 }
 
 body {
   background-color: var(--background-color);
-  color: var(--text-color);
+  color: var(--quinary-color);
+  font-family: var(--font-family);
 }

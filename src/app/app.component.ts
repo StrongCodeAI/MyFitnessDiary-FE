@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
+import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 
 /**
  * AppComponent - Componente raíz de la aplicación
@@ -43,7 +44,7 @@ import { HeaderComponent } from './components/header/header.component';
  */
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent, NavigationMenuComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
