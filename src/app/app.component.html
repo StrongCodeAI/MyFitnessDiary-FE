@@ -1,10 +1,40 @@
 <div class="app-container">
-  <!-- Header que aparece en todas las páginas -->
-  <app-header></app-header>
+  <!-- Header que cambia según la ruta -->
+  <app-header [isHomePage]="isHomePage"></app-header>
 
   <!-- Contenido principal -->
   <main class="main-content">
-    <!-- Aquí se renderizarán los componentes hijos a través del router -->
+    <!-- Menú de navegación -->
+    <nav class="nav-menu">
+      <div class="nav-item">
+        <img src="assets/icons/inicio.svg" alt="Inicio">
+        <span>Inicio</span>
+      </div>
+      <div class="nav-item">
+        <img src="assets/icons/diary.svg" alt="Diario">
+        <span>Diario</span>
+      </div>
+      <div class="nav-item">
+        <img src="assets/icons/template.svg" alt="Plantilla">
+        <span>Plantilla</span>
+      </div>
+      <div class="nav-item">
+        <img src="assets/icons/trainer.svg" alt="Entrenador">
+        <span>Entrenador</span>
+      </div>
+    </nav>
+    
+    <!-- Contenido dinámico según la ruta -->
     <router-outlet></router-outlet>
+
+    <!-- Botón de iniciar entrenamiento -->
+    <button class="start-workout-btn">
+      Iniciar entrenamiento
+    </button>
+
+    <!-- Carrusel -->
+    <div class="carousel">
+      <!-- ... contenido del carrusel ... -->
+    </div>
   </main>
 </div>

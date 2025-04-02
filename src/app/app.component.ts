@@ -49,7 +49,8 @@ import { HeaderComponent } from './components/header/header.component';
 })
 export class AppComponent implements OnInit {
   title = 'MyFitnessDiary';
-
+  isHomePage: boolean = true;
+  
   constructor() {
     // Inicializar servicios globales
     // Configurar temas

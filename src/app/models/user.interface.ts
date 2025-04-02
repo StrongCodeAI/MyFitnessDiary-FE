@@ -1,7 +1,7 @@
 interface User {
     firstName: string;
     lastName: string;
-    userName: string;
+    username: string;
     email: string;
     profilePicture: string;
 }

@@ -1,25 +1,37 @@
 <header class="header">
   <!-- Primera fila con los tres elementos -->
   <div class="header-top">
-    <!-- Imagen de perfil a la izquierda -->
-    <div class="profile-image">
-      <img src="assets/images/profile-default.svg" alt="Perfil de usuario">
-    </div>
+    <!-- Imagen de perfil a la izquierda (solo visible en home) -->
+    @if (isHomePage) {
+      <div class="profile-image">
+        <img src="assets/images/profile-default.svg" alt="Perfil">
+      </div>
+    } @else {
+      <div class="empty-space"></div>
+    }
 
-    <!-- Logo y nombre en el centro -->
+    <!-- Logo y nombre en el centro (siempre visible) -->
     <div class="logo-container">
-      <img src="assets/images/logo.svg" alt="Logo MyFitnessDiary" class="logo">
-      <h1 class="app-name">MyFitnessDiary</h1>
+      <img src="assets/images/logo.svg" alt="Logo" class="logo">
+      @if (isHomePage) { 
+        <h1 class="app-name">MyFitnessDiary</h1>
+      }
     </div>
 
-    <!-- Icono de configuración a la derecha -->
-    <div class="settings">
-      <img src="assets/images/settings.svg" alt="Configuración">
-    </div>
+    <!-- Icono de configuración a la derecha (solo visible en home) -->
+    @if (isHomePage) {
+      <div class="settings">
+        <img src="assets/icons/settings.svg" alt="Ajustes">
+      </div>
+    } @else {
+      <div class="empty-space"></div>
+    }
   </div>
 
-  <!-- Mensaje de bienvenida -->
-  <div class="welcome-message">
-    <h2>¡Hola {{user.userName}}! Aquí está tu progreso reciente</h2>
-  </div>
+  <!-- Mensaje de bienvenida (solo visible en home) -->
+  @if (isHomePage) {
+    <div class="welcome-message">
+      <h2>¡Hola, {{user.username}}! Aquí está tu progreso reciente</h2>
+    </div>
+  }
 </header>
