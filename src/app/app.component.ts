@@ -47,12 +47,11 @@ import { CommonModule } from '@angular/common';
  */
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomeHeaderComponent, DefaultHeaderComponent, NavigationMenuComponent, CommonModule],
+  imports: [RouterOutlet, HomeHeaderComponent, NavigationMenuComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  isHomePage: boolean = true;
   isHomeHeader = true;
 
   constructor(private headerService: HeaderService) {}
