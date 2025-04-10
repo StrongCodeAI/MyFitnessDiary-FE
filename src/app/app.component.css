@@ -26,13 +26,3 @@
   border: none;
   box-shadow: var(--shadow-md);
 }
-
-.carousel {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--background-color);
-  padding: 10px;
-  box-shadow: var(--shadow-top);
-}
