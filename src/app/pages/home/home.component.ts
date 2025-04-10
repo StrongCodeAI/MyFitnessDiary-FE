@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HeaderService } from '../../services/header.service';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,10 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-  // Aquí irá la lógica para la página de inicio
+export class HomeComponent implements OnInit {
+  constructor(private headerService: HeaderService) {}
+
+  ngOnInit() {
+    this.headerService.setHomeHeader();
+  }
 }

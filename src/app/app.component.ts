@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
+import { DefaultHeaderComponent } from './components/header/default-header.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
+import { HeaderService } from './services/header.service';
+import { CommonModule } from '@angular/common';
 
 /**
  * AppComponent - Componente raíz de la aplicación
@@ -44,21 +47,19 @@ import { NavigationMenuComponent } from './components/navigation-menu/navigation
  */
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, NavigationMenuComponent],
+  imports: [RouterOutlet, HeaderComponent, DefaultHeaderComponent, NavigationMenuComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'MyFitnessDiary';
   isHomePage: boolean = true;
-  
-  constructor() {
-    // Inicializar servicios globales
-    // Configurar temas
-    // Verificar estado de autenticación
-  }
+  isHomeHeader = true;
+
+  constructor(private headerService: HeaderService) {}
 
   ngOnInit() {
-    // Lógica de inicialización
+    this.headerService.headerState$.subscribe(state => {
+      this.isHomeHeader = state.type === 'home';
+    });
   }
 }
