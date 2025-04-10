@@ -1,42 +1,29 @@
-<header class="header"  [class.header-simple]="!isHomePage">
+<header class="header">
   <!-- Primera fila con los tres elementos -->
   <div class="header-top">
-    <!-- Imagen de perfil a la izquierda (solo visible en home) -->
-    @if (isHomePage) {
-      <div class="profile-image">
-        <img src="assets/images/profile-default.svg" alt="Perfil">
-      </div>
-    } @else {
-      <div class="empty-space"></div>
-    }
+    <!-- Imagen de perfil a la izquierda -->
+    <div class="profile-image">
+      <img src="assets/images/profile-default.svg" alt="Perfil">
+    </div>
 
-    <!-- Logo y nombre en el centro (siempre visible) -->
+    <!-- Logo y nombre en el centro -->
     <div class="logo-container">
       <img 
         src="assets/images/logo.svg" 
         alt="Logo" 
-        class="logo" 
-        [class.clickable]="isLogoClickable"
-        (click)="isLogoClickable && navigateToHome()">
-      @if (isHomePage) { 
-        <h1 class="app-name">MyFitnessDiary</h1>
-      }
+        class="logo"
+        (click)="navigateToHome()">
+      <h1 class="app-name">MyFitnessDiary</h1>
     </div>
 
-    <!-- Icono de configuración a la derecha (solo visible en home) -->
-    @if (isHomePage) {
-      <div class="settings">
-        <img src="assets/icons/settings.svg" alt="Ajustes" (click)="navigateToSettings()">
-      </div>
-    } @else {
-      <div class="empty-space"></div>
-    }
+    <!-- Icono de configuración a la derecha -->
+    <div class="settings">
+      <img src="assets/icons/settings.svg" alt="Ajustes" (click)="navigateToSettings()">
+    </div>
   </div>
 
-  <!-- Mensaje de bienvenida (solo visible en home) -->
-  @if (isHomePage) {
-    <div class="welcome-message">
-      <h2>¡Hola, {{user.username}}! Aquí está tu progreso reciente</h2>
-    </div>
-  }
+  <!-- Mensaje de bienvenida -->
+  <div class="welcome-message">
+    <h2>¡Hola, {{user.username}}! Aquí está tu progreso reciente</h2>
+  </div>
 </header>

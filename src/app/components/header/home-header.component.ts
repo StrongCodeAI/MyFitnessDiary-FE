@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import User from '../../models/user.interface';
 
 @Component({
@@ -8,8 +7,8 @@ import User from '../../models/user.interface';
   templateUrl: './home-header.component.html',
   styleUrls: ['./home-header.component.css'],
 })
-export class HomeHeaderComponent implements OnInit {
-  @Input() isHomePage: boolean = false;
+export class HomeHeaderComponent {
+  isHomePage: boolean = false;
   currentRoute: string = '';
   
   user: User = {
@@ -20,17 +19,9 @@ export class HomeHeaderComponent implements OnInit {
     profilePicture: 'assets/images/profile-default.svg'
   };
 
-  constructor(private router: Router) {}
-
-  ngOnInit() {
-    // Suscribirse a los cambios de ruta
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: any) => {
-      this.currentRoute = event.url;
-      this.isHomePage = this.currentRoute === '/' || this.currentRoute === '/home';
-    });
-  }
+  constructor(
+    private router: Router
+  ) {}
 
   navigateToSettings() {
     this.router.navigate(['/settings']);
@@ -38,12 +29,6 @@ export class HomeHeaderComponent implements OnInit {
 
   navigateToHome() {
     // Solo navegar si no estamos ya en home
-    if (!this.isHomePage) {
-      this.router.navigate(['/']);
-    }
-  }
-
-  get isLogoClickable(): boolean {
-    return !this.isHomePage;
+    this.router.navigate(['/']);
   }
 }

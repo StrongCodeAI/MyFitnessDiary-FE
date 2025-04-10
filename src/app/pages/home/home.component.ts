@@ -11,9 +11,10 @@ import { HeaderService } from '../../services/header.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private headerService: HeaderService) {}
+  constructor(private headerService: HeaderService) {
+    this.headerService.setHomeHeader();
+  }
 
   ngOnInit() {
-    this.headerService.setHomeHeader();
   }
 }

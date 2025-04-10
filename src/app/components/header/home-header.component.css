@@ -17,7 +17,6 @@
   height: 58px;
   border-radius: 50%;
   object-fit: cover;
-  cursor: pointer;
 }
 
 .logo-container {
@@ -33,15 +32,6 @@
 .logo {
   width: 42px;
   height: 42px;
-}
-
-.logo.clickable {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.logo.clickable:hover {
-  transform: scale(1.1);
 }
 
 .app-name {
@@ -75,15 +65,4 @@
   font-size: 0.8rem;
   color: color-mix(in srgb, var(--quinary-color) 50%, transparent);
   margin: 0;
-}
-
-.header-simple {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid color-mix(in srgb, var(--primary-color) 20%, transparent);
-}
-
-.header-simple .logo {
-  width: 42px;
 }
