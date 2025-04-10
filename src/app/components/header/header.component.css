@@ -33,7 +33,15 @@
 .logo {
   width: 42px;
   height: 42px;
+}
+
+.logo.clickable {
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo.clickable:hover {
+  transform: scale(1.1);
 }
 
 .app-name {
@@ -78,5 +86,4 @@
 
 .header-simple .logo {
   width: 42px;
-  height: 42px;
 }
