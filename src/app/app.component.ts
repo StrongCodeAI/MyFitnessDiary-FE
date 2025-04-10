@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HomeHeaderComponent } from './components/header/header.component';
+import { HomeHeaderComponent } from './components/header/home-header.component';
 import { DefaultHeaderComponent } from './components/header/default-header.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { HeaderService } from './services/header.service';

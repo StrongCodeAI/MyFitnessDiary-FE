@@ -5,8 +5,8 @@ import User from '../../models/user.interface';
 
 @Component({
   selector: 'app-home-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  templateUrl: './home-header.component.html',
+  styleUrls: ['./home-header.component.css'],
 })
 export class HomeHeaderComponent implements OnInit {
   @Input() isHomePage: boolean = false;
