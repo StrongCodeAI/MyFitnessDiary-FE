@@ -47,7 +47,7 @@ import { CommonModule } from '@angular/common';
  */
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomeHeaderComponent, NavigationMenuComponent, CommonModule],
+  imports: [RouterOutlet, HomeHeaderComponent, NavigationMenuComponent, CommonModule, DefaultHeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

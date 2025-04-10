@@ -19,6 +19,15 @@
   flex: 1;
   text-align: center;
   padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.nav-item.active {
+  color: var(--primary-color);
+}
+
+.nav-item.active .nav-icon {
+  fill: var(--primary-color);
 }
 
 .nav-icon {
@@ -26,9 +35,11 @@
   height: 24px;
   margin-bottom: 0.25rem;
   fill: color-mix(in srgb, var(--quinary-color) 50%, transparent);
+  transition: fill 0.3s ease;
 }
 
 .nav-item span {
   font-size: 0.875rem;
   line-height: 1.25rem;
+  transition: color 0.3s ease;
 }
