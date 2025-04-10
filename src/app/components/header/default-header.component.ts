@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import { HeaderService } from '../../services/header.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-default-header',
@@ -8,8 +8,16 @@ import { HeaderService } from '../../services/header.service';
   styleUrls: ['./default-header.component.css']
 })
 export class DefaultHeaderComponent {
-  showBackButton = true;
+  constructor(
+    private location: Location,
+    private router: Router
+  ) {}
 
-  constructor() {}
+  goBack() {
+    this.location.back();
+  }
 
+  navigateToHome() {
+    this.router.navigate(['/']);
+  }
 } 

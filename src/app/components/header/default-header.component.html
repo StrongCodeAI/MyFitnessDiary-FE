@@ -1,0 +1,22 @@
+<header class="header">
+  <div class="header-top">
+    <!-- Botón de retroceso a la izquierda -->
+    <div class="back-button" (click)="goBack()">
+      <svg class="back-icon" viewBox="0 0 24 24">
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+      </svg>
+    </div>
+
+    <!-- Logo y nombre en el centro -->
+    <div class="logo-container">
+      <img 
+        src="assets/images/logo.svg" 
+        alt="Logo" 
+        class="logo" 
+        (click)="navigateToHome()">
+    </div>
+
+    <!-- Espacio vacío a la derecha para mantener el balance -->
+    <div class="empty-space"></div>
+  </div>
+</header>

@@ -1,0 +1,65 @@
+.header {
+  padding: 0.1rem 1rem 0 1rem;
+  min-height: 47px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0 10px;
+  position: relative;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+}
+
+.back-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--quinary-color);
+}
+
+.logo-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.app-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--quinary-color);
+  margin: 0;
+}
+
+.empty-space {
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+}
