@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './components/header/header.component';
+import { HomeHeaderComponent } from './components/header/header.component';
 import { DefaultHeaderComponent } from './components/header/default-header.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { HeaderService } from './services/header.service';
@@ -47,7 +47,7 @@ import { CommonModule } from '@angular/common';
  */
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, DefaultHeaderComponent, NavigationMenuComponent, CommonModule],
+  imports: [RouterOutlet, HomeHeaderComponent, DefaultHeaderComponent, NavigationMenuComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
