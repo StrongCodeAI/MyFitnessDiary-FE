@@ -12,4 +12,8 @@ export class NavigationMenuComponent {
   isActive(route: string): boolean {
     return this.router.url === route;
   }
+
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
+  }
 }
