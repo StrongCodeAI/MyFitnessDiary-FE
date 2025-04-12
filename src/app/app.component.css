@@ -9,7 +9,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Espacio entre secciones */
+  gap: 10px; /* Espacio entre secciones */
   padding-bottom: 80px; /* Add padding for the fixed navigation menu */
 }
 

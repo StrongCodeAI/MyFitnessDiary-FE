@@ -20,7 +20,7 @@ export class TrainerComponent implements OnInit {
     private headerService: HeaderService,
     private dataManagementService: DataManagementService
   ) {
-    this.headerService.setDefaultHeader();
+    this.headerService.setDefaultHeader(false);
   }
 
   ngOnInit(): void {

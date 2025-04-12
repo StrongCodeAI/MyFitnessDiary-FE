@@ -1,15 +1,9 @@
-.header {
-  padding: 0.1rem 1rem 0 1rem;
-  min-height: 47px;
-}
-
 .header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding: 0 10px;
   position: relative;
+  border-bottom: 1px solid color-mix(in srgb, var(--primary-color) 80%, transparent);
 }
 
 .back-button {
