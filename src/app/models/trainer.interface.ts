@@ -9,6 +9,7 @@ export interface TrainerContact {
 
 export interface Trainer {
     id: UUID;
+    image: string;
     name: string;
     location: string;
     contact: TrainerContact;

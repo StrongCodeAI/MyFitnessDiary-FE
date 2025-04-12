@@ -15,6 +15,7 @@ export class DataManagementService {
     const mockTrainers: Trainer[] = [
       {
         id: parseUUID('550e8400-e29b-41d4-a716-446655440000'),
+        image: 'https://reqres.in/img/faces/2-image.jpg',
         name: 'Laura Jiménez',
         location: 'Madrid',
         contact: {
@@ -25,6 +26,7 @@ export class DataManagementService {
       },
       {
         id: parseUUID('123e4567-e89b-42d3-a456-556642440000'),
+        image: 'https://reqres.in/img/faces/1-image.jpg',
         name: 'Carlos Márquez',
         location: 'Barcelona',
         contact: {
@@ -34,6 +36,7 @@ export class DataManagementService {
       },
       {
         id: parseUUID('7f6d45c8-a23b-4f89-95e7-8d12c4b9a6d3'),
+        image: 'https://reqres.in/img/faces/3-image.jpg',
         name: 'Marta Ruiz',
         location: 'Valencia',
         contact: {
@@ -44,6 +47,7 @@ export class DataManagementService {
       },
       {
         id: parseUUID('550e8400-e29b-41d4-a716-446655440000'),
+        image: 'https://reqres.in/img/faces/4-image.jpg',
         name: 'Diego Hernández',
         location: 'Sevilla',
         contact: {
@@ -53,6 +57,7 @@ export class DataManagementService {
       },
       {
         id: parseUUID('123e4567-e89b-42d3-a456-556642440000'),
+        image: 'https://reqres.in/img/faces/7-image.jpg',
         name: 'Ainoha Torres',
         location: 'Bilbao',
         contact: {
