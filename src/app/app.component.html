@@ -1,7 +1,7 @@
 <div class="app-container">
   <!-- Header que cambia según la ruta -->
   <app-home-header *ngIf="isHomeHeader"></app-home-header>
-  <app-default-header *ngIf="!isHomeHeader"></app-default-header>
+  <app-default-header *ngIf="!isHomeHeader" [showBackButton]="showBackButton"></app-default-header>
 
   <!-- Contenido principal -->
   <main class="main-content">

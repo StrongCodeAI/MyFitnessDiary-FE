@@ -53,12 +53,14 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   isHomeHeader = true;
+  showBackButton = true;
 
   constructor(private headerService: HeaderService) {}
 
   ngOnInit() {
     this.headerService.headerState$.subscribe(state => {
       this.isHomeHeader = state.type === 'home';
+      this.showBackButton = state.showBackButton;
     });
   }
 }
