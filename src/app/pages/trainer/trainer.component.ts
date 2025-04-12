@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { HeaderService } from '../../services/header.service';
 import { DataManagementService } from '../../services/data-management.service';
 import { Trainer } from '../../models/trainer.interface';
+import { TrainerCardComponent } from '../../components/trainer-card/trainer-card.component';
 
 @Component({
   selector: 'app-trainer',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TrainerCardComponent],
   templateUrl: './trainer.component.html',
   styleUrls: ['./trainer.component.css']
 })

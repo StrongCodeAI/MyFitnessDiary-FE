@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { parse as parseUUID } from 'uuid';
 import { Trainer } from '../models/trainer.interface';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class DataManagementService {
     // Datos mock de entrenadores
     const mockTrainers: Trainer[] = [
       {
-        id: 'a1b2c3d4-e5f6-47g8-h9i0-j1k2l3m4n5o6',
+        id: parseUUID('550e8400-e29b-41d4-a716-446655440000'),
         name: 'Laura Jiménez',
         location: 'Madrid',
         contact: {
@@ -23,7 +24,7 @@ export class DataManagementService {
         specialties: ['Pérdida de peso', 'Entrenamiento en casa', 'Hábitos saludables']
       },
       {
-        id: 'b2c3d4e5-f6g7-48h9-i0j1-k2l3m4n5o6p7',
+        id: parseUUID('123e4567-e89b-42d3-a456-556642440000'),
         name: 'Carlos Márquez',
         location: 'Barcelona',
         contact: {
@@ -32,7 +33,7 @@ export class DataManagementService {
         specialties: ['Yoga para todos', 'Flexibilidad']
       },
       {
-        id: 'c3d4e5f6-g7h8-49i0-j1k2-l3m4n5o6p7q8',
+        id: parseUUID('7f6d45c8-a23b-4f89-95e7-8d12c4b9a6d3'),
         name: 'Marta Ruiz',
         location: 'Valencia',
         contact: {
@@ -42,7 +43,7 @@ export class DataManagementService {
         specialties: ['Mujeres activas', 'Fuerza y tonificación']
       },
       {
-        id: 'd4e5f6g7-h8i9-50j1-k2l3-m4n5o6p7q8r9',
+        id: parseUUID('550e8400-e29b-41d4-a716-446655440000'),
         name: 'Diego Hernández',
         location: 'Sevilla',
         contact: {
@@ -51,7 +52,7 @@ export class DataManagementService {
         specialties: ['Running', 'Cardio en casa', 'Supera tus límites']
       },
       {
-        id: 'e5f6g7h8-i9j0-51k2-l3m4-n5o6p7q8r9s0',
+        id: parseUUID('123e4567-e89b-42d3-a456-556642440000'),
         name: 'Ainoha Torres',
         location: 'Bilbao',
         contact: {

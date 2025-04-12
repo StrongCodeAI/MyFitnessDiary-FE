@@ -1,0 +1,20 @@
+<div class="trainer-card">
+  <div class="trainer-avatar">
+    <div class="avatar-icon"></div>
+  </div>
+  <div class="trainer-info">
+    <h2 class="trainer-name">{{trainer.name}}</h2>
+    <p class="trainer-location">Ubicación: {{trainer.location}}</p>
+    <div class="trainer-contact">
+      <p>Contacto: 
+        <a *ngIf="trainer.contact.email" [href]="'mailto:' + trainer.contact.email">{{trainer.contact.email}}</a>
+        <span *ngIf="trainer.contact.phone"><br>{{trainer.contact.phone}}</span>
+      </p>
+    </div>
+    <div class="trainer-specialties">
+      <span class="specialty-tag" *ngFor="let specialty of trainer.specialties">
+        {{specialty}}
+      </span>
+    </div>
+  </div>
+</div> 
