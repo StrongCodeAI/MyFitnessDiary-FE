@@ -8,8 +8,28 @@
       <form class="registration-form">
         <input type="text" placeholder="Nombre completo" class="form-input">
         <input type="email" placeholder="Email" class="form-input">
-        <input type="password" placeholder="Contraseña" class="form-input">
-        <input type="password" placeholder="Repite contraseña" class="form-input">
+          <input 
+            type="password" 
+            placeholder="Contraseña" 
+            class="form-input"
+            [(ngModel)]="password"
+            (ngModelChange)="onPasswordChange($event)"
+            (focus)="showPasswordErrors = true"
+            name="password">
+        <div class="password-input-container">
+        <input 
+          type="password" 
+          placeholder="Repite contraseña" 
+          class="form-input"
+          [(ngModel)]="confirmPassword"
+          (ngModelChange)="onConfirmPasswordChange($event)"
+          name="confirmPassword">
+          <div class="password-errors" *ngIf="showPasswordErrors && passwordErrors.length > 0">
+            <div class="error-message" *ngFor="let error of passwordErrors">
+              {{ error }}
+            </div>
+          </div>
+        </div>
       </form>
       <div class="registration-footer">
         <button type="submit" class="registration-button">Registrarme y entrar</button>
