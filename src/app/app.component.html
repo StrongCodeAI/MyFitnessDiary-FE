@@ -1,14 +1,13 @@
 <div class="app-container">
   <!-- Header que cambia según la ruta -->
-  <app-home-header *ngIf="isHomeHeader"></app-home-header>
-  <app-default-header *ngIf="!isHomeHeader" [showBackButton]="showBackButton"></app-default-header>
-
-  <!-- Contenido principal -->
-  <main class="main-content">
-    <!-- Contenido dinámico según la ruta -->
+  <ng-container *ngIf="isAuthenticated">
+    <app-home-header *ngIf="isHomeHeader"></app-home-header>
+    <app-default-header *ngIf="!isHomeHeader" [showBackButton]="showBackButton"></app-default-header>
+    <app-navigation-menu></app-navigation-menu>
     <router-outlet></router-outlet>
-  </main>
+  </ng-container>
 
-  <!-- Menú de navegación -->
-  <app-navigation-menu></app-navigation-menu>
+  <ng-container *ngIf="!isAuthenticated">
+    <router-outlet></router-outlet>
+  </ng-container>
 </div>

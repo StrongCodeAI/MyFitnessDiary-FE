@@ -5,6 +5,7 @@ import { DefaultHeaderComponent } from './components/header/default-header.compo
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { HeaderService } from './services/header.service';
 import { CommonModule } from '@angular/common';
+import { AuthService } from './services/auth.service';
 
 /**
  * AppComponent - Componente raíz de la aplicación
@@ -47,15 +48,21 @@ import { CommonModule } from '@angular/common';
  */
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomeHeaderComponent, NavigationMenuComponent, CommonModule, DefaultHeaderComponent],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, HomeHeaderComponent, NavigationMenuComponent, DefaultHeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
   isHomeHeader = true;
   showBackButton = true;
+  isAuthenticated = false;
 
-  constructor(private headerService: HeaderService) {}
+  constructor(private headerService: HeaderService, private authService: AuthService) {
+    this.authService.getCurrentUser().subscribe(user => {
+      this.isAuthenticated = !!user;
+    });
+  }
 
   ngOnInit() {
     this.headerService.headerState$.subscribe(state => {

@@ -4,9 +4,15 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { DiaryComponent } from './pages/diary/diary.component';
 import { TemplateComponent } from './pages/template/template.component';
 import { TrainerComponent } from './pages/trainer/trainer.component';
+import { LoginComponent } from './pages/login/login/login.component';
+import { RegistrationComponent } from './pages/login/registration/registration.component';
+import { ResetPasswordComponent } from './pages/login/reset-password/reset-password.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'home', component: HomeComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'diary', component: DiaryComponent },
