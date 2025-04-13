@@ -14,4 +14,5 @@ body {
   background-color: var(--background-color);
   color: var(--quinary-color);
   font-family: var(--font-family);
+  margin: 0;
 }
