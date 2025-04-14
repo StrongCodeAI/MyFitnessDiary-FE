@@ -12,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
 export class DefaultHeaderComponent {
   @Input() showBackButton: boolean = true;
   isSettingsPage = false;
+  showLogoutModal = false;
 
   constructor(
     private location: Location,
@@ -29,7 +30,15 @@ export class DefaultHeaderComponent {
     this.router.navigate(['/']);
   }
 
-  logout() {
+  openLogoutModal() {
+    this.showLogoutModal = true;
+  }
+
+  closeLogoutModal() {
+    this.showLogoutModal = false;
+  }
+
+  confirmLogout() {
     this.authService.currentUserSubject.next(null);
     this.router.navigate(['/login']);
   }
