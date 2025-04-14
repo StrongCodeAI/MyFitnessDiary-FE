@@ -1,3 +1,59 @@
 <div class="settings-container">
-  <h1>Ajustes</h1>
+  <!-- Sección de perfil -->
+  <div class="profile-section">
+    <div class="profile-image">
+      <img [src]="user.profilePicture" alt="Profile">
+    </div>
+    <h2 class="username">{{user.username}}</h2>
+  </div>
+
+  <!-- Sección de información -->
+  <div class="info-section">
+    <div class="info-item">
+      <label>Nombre</label>
+      <input type="text" [(ngModel)]="user.firstName" (blur)="updateUser()" [disabled]="!isEditing">
+    </div>
+    <div class="info-item">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="user.email" (blur)="updateUser()" [disabled]="!isEditing">
+    </div>
+    <div class="info-item">
+      <label>Tipo de suscripción</label>
+      <span class="subscription-type">Entrenador</span>
+    </div>
+    <div class="info-item">
+      <label>Estado de la suscripción</label>
+      <span class="subscription-status">Pendiente de verificación</span>
+    </div>
+  </div>
+
+  <!-- Botón de cambiar plan -->
+  <button class="change-plan-button">Cambiar de plan</button>
+
+  <!-- Enlace de eliminar cuenta -->
+  <div class="delete-account" (click)="openDeleteModal()">
+    Eliminar cuenta de usuario
+  </div>
+
+  <!-- Modal de confirmación de eliminación -->
+  <div class="modal-overlay" *ngIf="showDeleteModal" (click)="closeDeleteModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h2 *ngIf="!showDeletionInfo">¿Seguro que desea que borremos su cuenta?</h2>
+      <p *ngIf="!showDeletionInfo">Esta acción no puede revertirse y perderá el acceso a todos sus datos y funcionalidades.</p>
+      
+      <p *ngIf="showDeletionInfo">
+        Tus datos personales serán conservados únicamente durante el tiempo necesario para cumplir con las obligaciones legales o contractuales. 
+        Una vez transcurrido el periodo legal oportuno, tus datos serán eliminados de manera segura.
+      </p>
+
+      <div class="modal-buttons" *ngIf="!showDeletionInfo">
+        <button class="modal-button cancel" (click)="closeDeleteModal()">No</button>
+        <button class="modal-button confirm" (click)="confirmDeletion()">Sí</button>
+      </div>
+
+      <div class="modal-buttons" *ngIf="showDeletionInfo">
+        <button class="modal-button confirm" (click)="finalizeDeletion()">OK</button>
+      </div>
+    </div>
+  </div>
 </div>
