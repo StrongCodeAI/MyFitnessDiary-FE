@@ -1,6 +1,7 @@
 import { Component, HostListener, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PasswordService } from '../../../services/password.service';
 
 @Component({
   selector: 'app-registration',
@@ -15,6 +16,8 @@ export class RegistrationComponent implements OnDestroy {
   passwordErrors: string[] = [];
   showPasswordErrors = false;
 
+  constructor(private passwordService: PasswordService) {}
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
@@ -27,45 +30,19 @@ export class RegistrationComponent implements OnDestroy {
     }
   }
 
-  validatePassword(password: string): void {
-    this.passwordErrors = [];
-    
-    if (password.length < 8) {
-      this.passwordErrors.push('La contraseña debe tener al menos 8 caracteres');
-    }
-    
-    if (!/[A-Z]/.test(password)) {
-      this.passwordErrors.push('La contraseña debe contener al menos una letra mayúscula');
-    }
-    
-    if (!/[a-z]/.test(password)) {
-      this.passwordErrors.push('La contraseña debe contener al menos una letra minúscula');
-    }
-    
-    if (!/[0-9]/.test(password)) {
-      this.passwordErrors.push('La contraseña debe contener al menos un número');
-    }
-    
-    if (!/[!@#$%^&*]/.test(password)) {
-      this.passwordErrors.push('La contraseña debe contener al menos un carácter especial (!@#$%^&*)');
-    }
-  }
-
   onPasswordChange(password: string): void {
     this.password = password;
-    this.validatePassword(password);
+    this.passwordErrors = this.passwordService.validatePassword(password);
     this.showPasswordErrors = true;
   }
 
   onConfirmPasswordChange(confirmPassword: string): void {
     this.confirmPassword = confirmPassword;
-    if (this.password !== confirmPassword) {
-      if(!this.passwordErrors.includes('Las contraseñas no coinciden')){
-        this.passwordErrors.push('Las contraseñas no coinciden');
-      }
-    } else if (this.passwordErrors.includes('Las contraseñas no coinciden')) {
-      this.passwordErrors = this.passwordErrors.filter(error => error !== 'Las contraseñas no coinciden');
-    }
+    this.passwordErrors = this.passwordService.validatePasswordMatch(
+      this.password,
+      confirmPassword,
+      this.passwordErrors
+    );
   }
 
   ngOnDestroy(): void {
