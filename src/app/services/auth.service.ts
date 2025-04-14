@@ -5,7 +5,13 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  currentUserSubject = new BehaviorSubject<any>(null);
+  currentUserSubject = new BehaviorSubject<any>({
+    firstName: 'Test',
+    lastName: 'User',
+    username: 'testuser',
+    email: 'test@example.com',
+    profilePicture: 'assets/images/profile-default.svg'
+  });
 
   getCurrentUser() {
     return this.currentUserSubject.asObservable();

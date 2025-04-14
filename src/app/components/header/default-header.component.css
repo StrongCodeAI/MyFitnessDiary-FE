@@ -57,3 +57,20 @@
   height: 24px;
   padding: 8px;
 }
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 12px;
+  transition: transform 0.3s ease;
+}
+
+.logout-button:hover {
+  transform: scale(1.1);
+}
+
+.logout-icon {
+  width: 24px;
+  height: 24px;
+}

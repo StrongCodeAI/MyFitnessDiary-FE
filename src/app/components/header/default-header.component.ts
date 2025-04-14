@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-default-header',
@@ -10,11 +11,15 @@ import { Router } from '@angular/router';
 })
 export class DefaultHeaderComponent {
   @Input() showBackButton: boolean = true;
+  isSettingsPage = false;
 
   constructor(
     private location: Location,
-    private router: Router
-  ) {}
+    private router: Router,
+    private authService: AuthService
+  ) {
+    this.isSettingsPage = this.router.url === '/settings';
+  }
 
   goBack() {
     this.location.back();
@@ -22,5 +27,10 @@ export class DefaultHeaderComponent {
 
   navigateToHome() {
     this.router.navigate(['/']);
+  }
+
+  logout() {
+    this.authService.currentUserSubject.next(null);
+    this.router.navigate(['/login']);
   }
 } 
