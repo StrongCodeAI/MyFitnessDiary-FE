@@ -13,7 +13,7 @@ import { NavMenuService } from '../../services/nav-menu.service';
 })
 export class DiaryComponent implements OnInit {
   constructor(private headerService: HeaderService, private navMenuService: NavMenuService) {
-    this.headerService.setDefaultHeader();
+    this.headerService.setDefaultHeader(false);
     this.navMenuService.setNavMenuVisibility(true);
   }
 
