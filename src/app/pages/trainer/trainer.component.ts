@@ -5,7 +5,7 @@ import { HeaderService } from '../../services/header.service';
 import { DataManagementService } from '../../services/data-management.service';
 import { Trainer } from '../../models/trainer.interface';
 import { TrainerCardComponent } from '../../components/trainer-card/trainer-card.component';
-
+import { NavMenuService } from '../../services/nav-menu.service';
 @Component({
   selector: 'app-trainer',
   standalone: true,
@@ -18,9 +18,11 @@ export class TrainerComponent implements OnInit {
 
   constructor(
     private headerService: HeaderService,
-    private dataManagementService: DataManagementService
+    private dataManagementService: DataManagementService,
+    private navMenuService: NavMenuService
   ) {
     this.headerService.setDefaultHeader(false);
+    this.navMenuService.setNavMenuVisibility(true);
   }
 
   ngOnInit(): void {

@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HeaderService } from '../../services/header.service';
+import { NavMenuService } from '../../services/nav-menu.service';
 
 interface User {
   profilePicture: string;
@@ -33,9 +34,11 @@ export class SettingsComponent implements OnInit {
   constructor(
     private headerService: HeaderService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private navMenuService: NavMenuService
   ) {
     this.headerService.setDefaultHeader();
+    this.navMenuService.setNavMenuVisibility(false);
   }
 
   ngOnInit() {
