@@ -6,6 +6,7 @@ import { NavigationMenuComponent } from './components/navigation-menu/navigation
 import { HeaderService } from './services/header.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth.service';
+import { NavMenuService } from './services/nav-menu.service';
 
 /**
  * AppComponent - Componente raíz de la aplicación
@@ -56,9 +57,10 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit {
   isHomeHeader = true;
   showBackButton = true;
+  showNavMenu = false;
   isAuthenticated = false;
 
-  constructor(private headerService: HeaderService, private authService: AuthService) {
+  constructor(private headerService: HeaderService, private authService: AuthService, private navMenuService: NavMenuService) {
     this.authService.getCurrentUser().subscribe(user => {
       this.isAuthenticated = !!user;
     });
@@ -68,6 +70,10 @@ export class AppComponent implements OnInit {
     this.headerService.headerState$.subscribe(state => {
       this.isHomeHeader = state.type === 'home';
       this.showBackButton = state.showBackButton;
+    });
+
+    this.navMenuService.showNavMenu$.subscribe(show => {
+      this.showNavMenu = show;
     });
   }
 }

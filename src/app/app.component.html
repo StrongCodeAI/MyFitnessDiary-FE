@@ -3,7 +3,7 @@
   <ng-container *ngIf="isAuthenticated">
     <app-home-header *ngIf="isHomeHeader"></app-home-header>
     <app-default-header *ngIf="!isHomeHeader" [showBackButton]="showBackButton"></app-default-header>
-    <app-navigation-menu></app-navigation-menu>
+    <app-navigation-menu *ngIf="showNavMenu"></app-navigation-menu>
     <router-outlet></router-outlet>
   </ng-container>
 
