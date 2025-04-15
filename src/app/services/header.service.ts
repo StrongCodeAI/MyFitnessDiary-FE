@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 export interface HeaderState {
   type: 'home' | 'default';
   showBackButton: boolean;
+  showLogoutButton: boolean;
 }
 
 @Injectable({
@@ -12,7 +13,8 @@ export interface HeaderState {
 export class HeaderService {
   private headerState = new BehaviorSubject<HeaderState>({
     type: 'home',
-    showBackButton: false
+    showBackButton: false,
+    showLogoutButton: false
   });
 
   headerState$ = this.headerState.asObservable();
@@ -20,14 +22,16 @@ export class HeaderService {
   setHomeHeader() {
     this.headerState.next({
       type: 'home',
-      showBackButton: false
+      showBackButton: false,
+      showLogoutButton: false
     });
   }
 
-  setDefaultHeader(showBackButton: boolean = true) {
+  setDefaultHeader(showBackButton: boolean = true, showLogoutButton: boolean = false) {
     this.headerState.next({
       type: 'default',
-      showBackButton
+      showBackButton,
+      showLogoutButton
     });
   }
 } 

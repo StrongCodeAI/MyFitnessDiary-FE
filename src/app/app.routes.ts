@@ -7,6 +7,7 @@ import { TrainerComponent } from './pages/trainer/trainer.component';
 import { LoginComponent } from './pages/login/login/login.component';
 import { RegistrationComponent } from './pages/login/registration/registration.component';
 import { ResetPasswordComponent } from './pages/login/reset-password/reset-password.component';
+import { PricingComponent } from './pages/pricing/pricing.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: 'settings', component: SettingsComponent },
   { path: 'diary', component: DiaryComponent },
   { path: 'template', component: TemplateComponent },
-  { path: 'trainer', component: TrainerComponent }
+  { path: 'trainer', component: TrainerComponent },
+  { path: 'pricing', component: PricingComponent }
 ];

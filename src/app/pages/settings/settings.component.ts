@@ -37,7 +37,7 @@ export class SettingsComponent implements OnInit {
     private router: Router,
     private navMenuService: NavMenuService
   ) {
-    this.headerService.setDefaultHeader();
+    this.headerService.setDefaultHeader(true, true);
     this.navMenuService.setNavMenuVisibility(false);
   }
 
@@ -72,5 +72,9 @@ export class SettingsComponent implements OnInit {
   finalizeDeletion() {
     this.authService.currentUserSubject.next(null);
     this.router.navigate(['/login']);
+  }
+
+  navigateToPricing() {
+    this.router.navigate(['/pricing']);
   }
 }

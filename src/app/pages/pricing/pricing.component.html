@@ -1,0 +1,35 @@
+<div class="pricing-container">
+  <h1>Precios</h1>
+  
+  <p class="description">
+    Usa MyFitnessDiary gratuitamente. Para más resultados y más personalización, hazte Premium gratis*.
+  </p>
+
+  <div class="plan-selector">
+    <button 
+      [class.active]="selectedPlan === 'monthly'"
+      (click)="changePlan('monthly')">
+      Mensual
+    </button>
+    <button 
+      [class.active]="selectedPlan === 'annual'"
+      [disabled]="true"
+      (click)="changePlan('annual')">
+      Anual
+      <span class="coming-soon">(Próximamente)</span>
+    </button>
+  </div>
+
+  <div class="price-cards">
+    <app-price-card
+      *ngFor="let plan of pricePlans"
+      [planName]="plan.name"
+      [price]="plan.price"
+      [features]="plan.features">
+    </app-price-card>
+  </div>
+
+  <p class="footnote">
+    *Prueba gratis durante 7 días. Sólo válido para nuevos usuarios.
+  </p>
+</div> 

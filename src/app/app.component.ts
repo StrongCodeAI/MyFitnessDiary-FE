@@ -57,6 +57,7 @@ import { NavMenuService } from './services/nav-menu.service';
 export class AppComponent implements OnInit {
   isHomeHeader = true;
   showBackButton = true;
+  showLogoutButton = false;
   showNavMenu = false;
   isAuthenticated = false;
 
@@ -70,6 +71,7 @@ export class AppComponent implements OnInit {
     this.headerService.headerState$.subscribe(state => {
       this.isHomeHeader = state.type === 'home';
       this.showBackButton = state.showBackButton;
+      this.showLogoutButton = state.showLogoutButton;
     });
 
     this.navMenuService.showNavMenu$.subscribe(show => {

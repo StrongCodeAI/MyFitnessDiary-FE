@@ -11,16 +11,14 @@ import { AuthService } from '../../services/auth.service';
 })
 export class DefaultHeaderComponent {
   @Input() showBackButton: boolean = true;
-  isSettingsPage = false;
+  @Input() showLogoutButton: boolean = false;
   showLogoutModal = false;
 
   constructor(
     private location: Location,
     private router: Router,
     private authService: AuthService
-  ) {
-    this.isSettingsPage = this.router.url === '/settings';
-  }
+  ) {}
 
   goBack() {
     this.location.back();
