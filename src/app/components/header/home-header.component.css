@@ -5,24 +5,22 @@
 
 .header-top {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding: 0 10px;
+  padding: 10px;
   position: relative;
 }
 
 .profile-image img {
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
+  display: flex;
 }
 
 .logo-container {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,8 +40,11 @@
 }
 
 .settings {
+  width: 60px;
+  height: 60px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
 }
 
 .settings img {

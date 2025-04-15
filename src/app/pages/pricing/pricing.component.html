@@ -5,21 +5,6 @@
     Usa MyFitnessDiary gratuitamente. Para más resultados y más personalización, hazte Premium gratis*.
   </p>
 
-  <div class="plan-selector">
-    <button 
-      [class.active]="selectedPlan === 'monthly'"
-      (click)="changePlan('monthly')">
-      Mensual
-    </button>
-    <button 
-      [class.active]="selectedPlan === 'annual'"
-      [disabled]="true"
-      (click)="changePlan('annual')">
-      Anual
-      <span class="coming-soon">(Próximamente)</span>
-    </button>
-  </div>
-
   <div class="price-cards">
     <app-price-card
       *ngFor="let plan of pricePlans"
