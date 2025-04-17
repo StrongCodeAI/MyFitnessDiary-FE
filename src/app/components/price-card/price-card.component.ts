@@ -16,4 +16,5 @@ export class PriceCardComponent {
   @Input() planName: string = '';
   @Input() price: number | null = null;
   @Input() features: PriceFeature[] = [];
+  @Input() paymentLink: string | null = null;
 } 

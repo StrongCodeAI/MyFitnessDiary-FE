@@ -8,6 +8,7 @@ interface PricePlan {
   name: string;
   price: number | null;
   features: { description: string }[];
+  paymentLink: string | null;
 }
 
 @Component({
@@ -29,7 +30,8 @@ export class PricingComponent {
         { description: 'Crea tus propias plantillas' },
         { description: 'Observa tus estadísticas' },
         { description: 'Contacta con entrenadores' }
-      ]
+      ],
+      paymentLink: null
     },
     {
       name: 'Premium',
@@ -37,7 +39,8 @@ export class PricingComponent {
       features: [
         { description: 'Obtén estadísticas premium' },
         { description: 'Mejores consejos de la IA' }
-      ]
+      ],
+      paymentLink: 'https://buy.stripe.com/test_cN25mY5Zj0cxbgQeUU'
     },
     {
       name: 'Entrenador',
@@ -45,7 +48,8 @@ export class PricingComponent {
       features: [
         { description: 'Muéstrate en nuestra lista de entrenadores' },
         { description: 'Comparte tus plantillas' }
-      ]
+      ],
+      paymentLink: null
     }
   ];
 
