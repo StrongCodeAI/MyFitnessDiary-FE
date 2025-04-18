@@ -5,94 +5,25 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  align-items: center;
 }
-
-/* Sección de título */
-.title-section {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.title-section h1 {
-  color: var(--quinary-color);
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.title-section p {
-  color: var(--quinary-color);
-  opacity: 0.8;
-  font-size: 1rem;
-}
-
-/* Sección de creación */
-.create-section {
-  margin-bottom: 3rem;
-}
-
-.create-section h2 {
-  color: var(--quinary-color);
-  margin-bottom: 1.5rem;
-}
-
-.template-form {
-  background-color: var(--background-color);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  color: var(--quinary-color);
-  margin-bottom: 0.5rem;
-}
-
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid var(--quinary-color);
-  border-radius: 4px;
-  background-color: var(--background-color);
-  color: var(--quinary-color);
-}
-
-.create-button {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 100%;
-  margin-top: 1rem;
-}
-
-.create-button:hover {
-  background-color: var(--secondary-color);
-}
-
 /* Lista de plantillas */
 .templates-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
 }
 
 .template-item {
-  background-color: var(--background-color);
-  border-radius: 12px;
-  padding: 1.5rem;
+  background-color: white;
+  border-radius: 15px;
+  padding: 0px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+
 }
 
 .template-info h3 {
@@ -109,7 +40,6 @@
 
 .template-actions {
   display: flex;
-  gap: 1rem;
 }
 
 .action-button {
@@ -134,11 +64,11 @@
 }
 
 .action-button.edit:hover {
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .action-button.delete:hover {
-  color: #dc3545;
+  color: var(--primary-color);
 }
 
 /* Botón de crear plantilla */
@@ -146,21 +76,18 @@
   background-color: var(--primary-color);
   color: white;
   border: none;
+  padding: 15px 30px;
   border-radius: 15px;
-  padding: 1rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: auto;
-  transition: background-color 0.3s ease;
-  width: 100%;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 75%;
+  margin-bottom: 30px;
+  transition: background-color 0.3s;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 100px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .create-template-button:hover {

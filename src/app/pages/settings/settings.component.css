@@ -88,11 +88,11 @@
 }
 
 .change-plan-button:hover {
-  background-color: #e55e00;
+  background-color: var(--secondary-color);
 }
 
 .delete-account {
-  color: #ff4444;
+  color: var(--primary-color);
   text-align: center;
   padding: 20px 0;
   cursor: pointer;
