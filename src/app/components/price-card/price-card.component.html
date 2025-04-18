@@ -1,4 +1,4 @@
-<div class="price-card" [class.clickable]="paymentLink">
+<div class="price-card" [class.clickable]="paymentLink" (click)="onCardClick()">
   <ng-container *ngIf="paymentLink; else noLink">
     <a [href]="paymentLink" target="_blank" class="card-link">
       <ng-container *ngTemplateOutlet="cardContent"></ng-container>
@@ -30,4 +30,24 @@
       </div>
     </div>
   </ng-template>
+
+  <!-- Modal de confirmación para el plan Entrenador -->
+  <div class="modal-overlay" *ngIf="showTrainerModal" (click)="closeTrainerModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h2 *ngIf="!showConfirmationTrainerInfo">Confirmación de solicitud</h2>
+      <p *ngIf="!showConfirmationTrainerInfo">Se informará a los administradores del sistema de su solicitud para ser entrenador. Recibirá un enlace a nuestra pasarela de pago cuando verifiquemos su identidad.</p>
+      <p *ngIf="!showConfirmationTrainerInfo">¿Desea continuar?</p>
+
+      <p *ngIf="showConfirmationTrainerInfo"> Se ha notificado a los administradores, pronto nos pondremos en contacto contigo </p>
+      
+      <div class="modal-buttons" *ngIf="!showConfirmationTrainerInfo">
+        <button class="modal-button cancel" (click)="closeTrainerModal()">No</button>
+        <button class="modal-button confirm" (click)="confirmTrainerRequest()">Sí</button>
+      </div>
+
+      <div class="modal-buttons" *ngIf="showConfirmationTrainerInfo">
+        <button class="modal-button confirm" (click)="finalizeConfirmationTrainerInfo()">OK</button>
+      </div>
+    </div>
+  </div>
 </div>
