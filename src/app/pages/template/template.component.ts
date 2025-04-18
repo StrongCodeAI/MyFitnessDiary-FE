@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderService } from '../../services/header.service';
 import { NavMenuService } from '../../services/nav-menu.service';
+import { Template } from '../../models/template.interface';
 
 @Component({
   selector: 'app-template',
@@ -12,11 +13,40 @@ import { NavMenuService } from '../../services/nav-menu.service';
   styleUrls: ['./template.component.css']
 })
 export class TemplateComponent implements OnInit {
-  constructor(private headerService: HeaderService, private navMenuService: NavMenuService) {
+  templates: Template[] = [
+    { id: '1', name: 'Día 1 Sem 1', exerciseCount: 10 },
+    { id: '2', name: 'Día 2 Sem 1', exerciseCount: 11 },
+    { id: '3', name: 'Día 2 Sem 2', exerciseCount: 2 }
+  ];
+
+  constructor(
+    private headerService: HeaderService, 
+    private navMenuService: NavMenuService
+  ) {
     this.headerService.setDefaultHeader(false);
     this.navMenuService.setNavMenuVisibility(true);
   }
 
   ngOnInit() {
+  }
+
+  viewTemplate(template: Template) {
+    // TODO: Implementar la visualización de la plantilla
+    console.log('Ver plantilla:', template);
+  }
+
+  editTemplate(template: Template) {
+    // TODO: Implementar la edición de la plantilla
+    console.log('Editar plantilla:', template);
+  }
+
+  deleteTemplate(template: Template) {
+    // TODO: Implementar la eliminación de la plantilla
+    console.log('Eliminar plantilla:', template);
+  }
+
+  createTemplate() {
+    // TODO: Implementar la creación de una nueva plantilla
+    console.log('Crear nueva plantilla');
   }
 } 
