@@ -2,12 +2,12 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { DiaryComponent } from './pages/diary/diary.component';
-import { TemplateComponent } from './pages/template/template.component';
 import { TrainerComponent } from './pages/trainer/trainer.component';
 import { LoginComponent } from './pages/login/login/login.component';
 import { RegistrationComponent } from './pages/login/registration/registration.component';
 import { ResetPasswordComponent } from './pages/login/reset-password/reset-password.component';
 import { PricingComponent } from './pages/pricing/pricing.component';
+import { TemplateListComponent } from './pages/template/template-list.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,7 +17,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'diary', component: DiaryComponent },
-  { path: 'template', component: TemplateComponent },
+  { path: 'template-list', component: TemplateListComponent },
   { path: 'trainer', component: TrainerComponent },
   { path: 'pricing', component: PricingComponent }
 ];

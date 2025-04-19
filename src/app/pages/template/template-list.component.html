@@ -1,8 +1,8 @@
 <div class="template-container">
   <!-- Lista de plantillas -->
   <div class="templates-list">
-    <app-template-card class="template-item" *ngFor="let template of templates" [template]="template"
-      (view)="viewTemplate($event)" (edit)="editTemplate($event)" (delete)="deleteTemplate($event)">
+    <app-template-card class="template-item" *ngFor="let template of templates" [template]="template" (view)="viewTemplate($event)"
+      (edit)="editTemplate($event)" (delete)="deleteTemplate($event)">
     </app-template-card>
   </div>
 
@@ -21,4 +21,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> 

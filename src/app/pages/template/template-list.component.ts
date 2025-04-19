@@ -7,13 +7,13 @@ import { Template } from '../../models/template.interface';
 import { TemplateCardComponent } from '../../components/template-card/template-card.component';
 
 @Component({
-  selector: 'app-template',
+  selector: 'app-template-list',
   standalone: true,
   imports: [CommonModule, RouterModule, TemplateCardComponent],
-  templateUrl: './template.component.html',
-  styleUrls: ['./template.component.css']
+  templateUrl: './template-list.component.html',
+  styleUrls: ['./template-list.component.css']
 })
-export class TemplateComponent implements OnInit {
+export class TemplateListComponent implements OnInit {
   templates: Template[] = [
     { id: '1', name: 'Día 1 Sem 1', exerciseCount: 10 },
     { id: '2', name: 'Día 2 Sem 1', exerciseCount: 11 },
