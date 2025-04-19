@@ -5,7 +5,7 @@ import { HeaderService } from '../../../services/header.service';
 import { NavMenuService } from '../../../services/nav-menu.service';
 import { Template } from '../../../models/template.interface';
 import { TemplateCardComponent } from '../../../components/template-card/template-card.component';
-
+import { DataManagementService } from '../../../services/data-management.service';
 @Component({
   selector: 'app-template-list',
   standalone: true,
@@ -14,24 +14,29 @@ import { TemplateCardComponent } from '../../../components/template-card/templat
   styleUrls: ['./template-list.component.css']
 })
 export class TemplateListComponent implements OnInit {
-  templates: Template[] = [
-    { id: '1', name: 'Día 1 Sem 1', exerciseCount: 10 },
-    { id: '2', name: 'Día 2 Sem 1', exerciseCount: 11 },
-    { id: '3', name: 'Día 2 Sem 2', exerciseCount: 2 }
-  ];
-
+  templates: Template[] = [];
   showDeleteModal = false;
   templateToDelete: Template | null = null;
 
   constructor(
     private headerService: HeaderService, 
-    private navMenuService: NavMenuService
+    private navMenuService: NavMenuService,
+    private dataManagementService: DataManagementService
   ) {
     this.headerService.setDefaultHeader(false);
     this.navMenuService.setNavMenuVisibility(true);
   }
 
   ngOnInit() {
+    this.loadTemplates();
+  }
+
+  private loadTemplates(): void {
+    this.dataManagementService.getTemplates().subscribe({
+      next: (templates) => {
+        this.templates = templates;
+      }
+    });
   }
 
   viewTemplate(template: Template) {

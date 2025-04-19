@@ -1,5 +1,7 @@
+import { UUID } from "./uuid";
+
 export interface Template {
-    id: string;
+    id: UUID;
     name: string;
     exerciseCount: number;
 } 

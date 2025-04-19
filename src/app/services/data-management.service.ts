@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { parse as parseUUID } from 'uuid';
 import { Trainer } from '../models/trainer.interface';
+import { Template } from '../models/template.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +69,29 @@ export class DataManagementService {
       }
     ];
     return of(mockTrainers);
+  }
+
+  getTemplates(): Observable<Template[]> {
+    // Datos mock de templates
+    const mockTemplates: Template[] = [
+      {
+        id: parseUUID('550e8400-e29b-41d4-a716-446655440000'),
+        name: 'Entrenamiento de 30 minutos',
+        exerciseCount: 10,
+      },
+      {
+        id: parseUUID('9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'),
+        name: 'Entrenamiento de 45 minutos',
+        exerciseCount: 15,
+      },
+      {
+        id: parseUUID('1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'),
+        name: 'Entrenamiento de 60 minutos',
+        exerciseCount: 20,
+      }
+
+    ]
+    return of(mockTemplates);
   }
 
 } 

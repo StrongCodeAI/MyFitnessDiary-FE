@@ -3,12 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ViewIconComponent } from '../icons/view-icon.component';
 import { EditIconComponent } from '../icons/edit-icon.component';
 import { DeleteIconComponent } from '../icons/delete-icon.component';
-
-interface Template {
-  id: string;
-  name: string;
-  exerciseCount: number;
-}
+import { Template } from '../../models/template.interface';
 
 @Component({
   selector: 'app-template-card',
