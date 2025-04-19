@@ -1,7 +1,5 @@
-import { UUID } from "./uuid";
-
 export interface Template {
-    id: UUID;
-    name: string;
-    exerciseCount: number;
+    id: string | null;
+    name: string | null;
+    exerciseCount: number | null;
 } 

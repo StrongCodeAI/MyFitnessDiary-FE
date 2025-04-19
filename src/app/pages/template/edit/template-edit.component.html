@@ -1,0 +1,12 @@
+<div class="template-edit-container">
+  <div class="template-form">
+    <h2 class="editable-title" contenteditable="true" (input)="onTitleChange($event)" (blur)="onTitleBlur($event)">
+      {{ template.id ? template.name : 'Nueva Plantilla' }}
+    </h2>
+    
+    <div class="form-actions">
+      <button class="cancel-button" (click)="cancel()">Cancelar</button>
+      <button class="save-button" (click)="saveTemplate()">Guardar</button>
+    </div>
+  </div>
+</div> 

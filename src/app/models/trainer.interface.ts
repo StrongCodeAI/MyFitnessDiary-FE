@@ -1,12 +1,10 @@
-import { UUID } from "./uuid";
-
 export interface TrainerContact {
     email?: string;
     phone?: string;
 }
 
 export interface Trainer {
-    id: UUID;
+    id: string;
     image: string;
     name: string;
     location: string;

@@ -8,6 +8,7 @@ import { RegistrationComponent } from './pages/login/registration/registration.c
 import { ResetPasswordComponent } from './pages/login/reset-password/reset-password.component';
 import { PricingComponent } from './pages/pricing/pricing.component';
 import { TemplateListComponent } from './pages/template/list/template-list.component';
+import { TemplateEditComponent } from './pages/template/edit/template-edit.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,6 +19,8 @@ export const routes: Routes = [
   { path: 'settings', component: SettingsComponent },
   { path: 'diary', component: DiaryComponent },
   { path: 'template-list', component: TemplateListComponent },
+  { path: 'template-edit', component: TemplateEditComponent },
+  { path: 'template-edit/:id', component: TemplateEditComponent },
   { path: 'trainer', component: TrainerComponent },
   { path: 'pricing', component: PricingComponent }
 ];

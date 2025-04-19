@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { parse as parseUUID } from 'uuid';
+import { map, Observable, of } from 'rxjs';
 import { Trainer } from '../models/trainer.interface';
 import { Template } from '../models/template.interface';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class DataManagementService {
     // Datos mock de entrenadores
     const mockTrainers: Trainer[] = [
       {
-        id: parseUUID('550e8400-e29b-41d4-a716-446655440000'),
+        id: uuidv4(),
         image: 'https://reqres.in/img/faces/2-image.jpg',
         name: 'Laura Jiménez',
         location: 'Madrid',
@@ -26,7 +26,7 @@ export class DataManagementService {
         specialties: ['Pérdida de peso', 'Entrenamiento en casa', 'Hábitos saludables']
       },
       {
-        id: parseUUID('123e4567-e89b-42d3-a456-556642440000'),
+        id: uuidv4(),
         image: 'https://reqres.in/img/faces/1-image.jpg',
         name: 'Carlos Márquez',
         location: 'Barcelona',
@@ -36,7 +36,7 @@ export class DataManagementService {
         specialties: ['Yoga para todos', 'Flexibilidad']
       },
       {
-        id: parseUUID('7f6d45c8-a23b-4f89-95e7-8d12c4b9a6d3'),
+        id: uuidv4(),
         image: 'https://reqres.in/img/faces/3-image.jpg',
         name: 'Marta Ruiz',
         location: 'Valencia',
@@ -47,7 +47,7 @@ export class DataManagementService {
         specialties: ['Mujeres activas', 'Fuerza y tonificación']
       },
       {
-        id: parseUUID('550e8400-e29b-41d4-a716-446655440000'),
+        id: uuidv4(),
         image: 'https://reqres.in/img/faces/4-image.jpg',
         name: 'Diego Hernández',
         location: 'Sevilla',
@@ -57,7 +57,7 @@ export class DataManagementService {
         specialties: ['Running', 'Cardio en casa', 'Supera tus límites']
       },
       {
-        id: parseUUID('123e4567-e89b-42d3-a456-556642440000'),
+        id: uuidv4(),
         image: 'https://reqres.in/img/faces/7-image.jpg',
         name: 'Ainoha Torres',
         location: 'Bilbao',
@@ -75,23 +75,30 @@ export class DataManagementService {
     // Datos mock de templates
     const mockTemplates: Template[] = [
       {
-        id: parseUUID('550e8400-e29b-41d4-a716-446655440000'),
+        id: uuidv4(),
         name: 'Entrenamiento de 30 minutos',
         exerciseCount: 10,
       },
       {
-        id: parseUUID('9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'),
+        id: uuidv4(),
         name: 'Entrenamiento de 45 minutos',
         exerciseCount: 15,
       },
       {
-        id: parseUUID('1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'),
+        id: uuidv4(),
         name: 'Entrenamiento de 60 minutos',
         exerciseCount: 20,
       }
 
     ]
     return of(mockTemplates);
+  }
+
+  getTemplateById(templateId: string): Observable<Template> {
+    // Simular una llamada a la API para obtener la plantilla
+    return this.getTemplates().pipe(
+      map(templates => templates.find(t => t.id === templateId)!)
+    );
   }
 
 } 

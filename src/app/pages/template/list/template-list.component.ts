@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { HeaderService } from '../../../services/header.service';
 import { NavMenuService } from '../../../services/nav-menu.service';
 import { Template } from '../../../models/template.interface';
 import { TemplateCardComponent } from '../../../components/template-card/template-card.component';
 import { DataManagementService } from '../../../services/data-management.service';
+
 @Component({
   selector: 'app-template-list',
   standalone: true,
@@ -21,7 +22,8 @@ export class TemplateListComponent implements OnInit {
   constructor(
     private headerService: HeaderService, 
     private navMenuService: NavMenuService,
-    private dataManagementService: DataManagementService
+    private dataManagementService: DataManagementService,
+    private router: Router
   ) {
     this.headerService.setDefaultHeader(false);
     this.navMenuService.setNavMenuVisibility(true);
@@ -45,8 +47,8 @@ export class TemplateListComponent implements OnInit {
   }
 
   editTemplate(template: Template) {
-    // TODO: Implementar la edición de la plantilla
     console.log('Editar plantilla:', template);
+    this.router.navigate(['/template-edit', template.id]);
   }
 
   deleteTemplate(template: Template) {
@@ -68,7 +70,6 @@ export class TemplateListComponent implements OnInit {
   }
 
   createTemplate() {
-    // TODO: Implementar la creación de una nueva plantilla
-    console.log('Crear nueva plantilla');
+    this.router.navigate(['/template-edit']);
   }
 } 
