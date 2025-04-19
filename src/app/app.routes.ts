@@ -7,7 +7,7 @@ import { LoginComponent } from './pages/login/login/login.component';
 import { RegistrationComponent } from './pages/login/registration/registration.component';
 import { ResetPasswordComponent } from './pages/login/reset-password/reset-password.component';
 import { PricingComponent } from './pages/pricing/pricing.component';
-import { TemplateListComponent } from './pages/template/template-list.component';
+import { TemplateListComponent } from './pages/template/list/template-list.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

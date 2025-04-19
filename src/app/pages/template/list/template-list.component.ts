@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HeaderService } from '../../services/header.service';
-import { NavMenuService } from '../../services/nav-menu.service';
-import { Template } from '../../models/template.interface';
-import { TemplateCardComponent } from '../../components/template-card/template-card.component';
+import { HeaderService } from '../../../services/header.service';
+import { NavMenuService } from '../../../services/nav-menu.service';
+import { Template } from '../../../models/template.interface';
+import { TemplateCardComponent } from '../../../components/template-card/template-card.component';
 
 @Component({
   selector: 'app-template-list',
