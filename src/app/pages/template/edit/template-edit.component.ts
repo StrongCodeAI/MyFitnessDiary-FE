@@ -7,11 +7,12 @@ import { NavMenuService } from '../../../services/nav-menu.service';
 import { Template } from '../../../models/template.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { DataManagementService } from '../../../services/data-management.service';
+import { LoadingSpinnerComponent } from '../../../components/loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-template-edit',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, LoadingSpinnerComponent],
   templateUrl: './template-edit.component.html',
   styleUrls: ['./template-edit.component.css']
 })
