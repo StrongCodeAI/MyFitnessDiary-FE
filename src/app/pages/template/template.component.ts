@@ -4,11 +4,14 @@ import { RouterModule } from '@angular/router';
 import { HeaderService } from '../../services/header.service';
 import { NavMenuService } from '../../services/nav-menu.service';
 import { Template } from '../../models/template.interface';
+import { ViewIconComponent } from '../../components/icons/view-icon.component';
+import { EditIconComponent } from '../../components/icons/edit-icon.component';
+import { DeleteIconComponent } from '../../components/icons/delete-icon.component';
 
 @Component({
   selector: 'app-template',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ViewIconComponent, EditIconComponent, DeleteIconComponent],
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.css']
 })
