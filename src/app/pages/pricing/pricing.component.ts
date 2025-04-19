@@ -47,7 +47,7 @@ export class PricingComponent {
       price: 9.99,
       features: [
         { description: 'Muéstrate en nuestra lista de entrenadores' },
-        { description: 'Comparte tus plantillas' }
+        { description: 'Comparte tus plantillas con tus clientes' }
       ],
       paymentLink: null
     }

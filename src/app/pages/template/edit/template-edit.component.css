@@ -8,7 +8,7 @@
 }
 
 .editable-title {
-  margin: 0 0 20px 0;
+  margin: 0px;
   padding: 10px;
   border: 2px solid transparent;
   border-radius: 4px;
@@ -18,7 +18,7 @@
 }
 
 .editable-title:focus {
-  border-color: #4CAF50;
+  border-color: var(--primary-color);
   background-color: #f8f8f8;
 }
 
