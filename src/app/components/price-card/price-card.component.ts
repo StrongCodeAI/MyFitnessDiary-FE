@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { CheckIconComponent } from '../icons/check-icon.component';
 
 interface PriceFeature {
   description: string;
@@ -9,7 +10,7 @@ interface PriceFeature {
 @Component({
   selector: 'app-price-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CheckIconComponent],
   templateUrl: './price-card.component.html',
   styleUrls: ['./price-card.component.css']
 })

@@ -52,6 +52,7 @@ h2 {
 .check-icon {
   display: flex;
   margin-right: 5px;
+  color: #1C274C;
 }
 
 .price-card.clickable:hover {
