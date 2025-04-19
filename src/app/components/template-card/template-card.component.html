@@ -1,0 +1,17 @@
+<div class="template-card">
+  <div class="template-info">
+    <h3>{{ template.name }}</h3>
+    <p>{{ template.exerciseCount }} Ejercicios</p>
+  </div>
+  <div class="template-actions">
+    <button class="action-button view" (click)="viewTemplate(template)">
+      <app-view-icon></app-view-icon>
+    </button>
+    <button class="action-button edit" (click)="editTemplate(template)">
+      <app-edit-icon></app-edit-icon>
+    </button>
+    <button class="action-button delete" (click)="deleteTemplate(template)">
+      <app-delete-icon></app-delete-icon>
+    </button>
+  </div>
+</div>

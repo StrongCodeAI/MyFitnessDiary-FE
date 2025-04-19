@@ -1,23 +1,9 @@
 <div class="template-container">
   <!-- Lista de plantillas -->
   <div class="templates-list">
-    <div class="template-item" *ngFor="let template of templates">
-      <div class="template-info">
-        <h3>{{ template.name }}</h3>
-        <p>{{ template.exerciseCount }} Ejercicios</p>
-      </div>
-      <div class="template-actions">
-        <button class="action-button view" (click)="viewTemplate(template)">
-          <app-view-icon></app-view-icon>
-        </button>
-        <button class="action-button edit" (click)="editTemplate(template)">
-          <app-edit-icon></app-edit-icon>
-        </button>
-        <button class="action-button delete" (click)="deleteTemplate(template)">
-          <app-delete-icon></app-delete-icon>
-        </button>
-      </div>
-    </div>
+    <app-template-card class="template-item" *ngFor="let template of templates" [template]="template"
+      (view)="viewTemplate($event)" (edit)="editTemplate($event)" (delete)="deleteTemplate($event)">
+    </app-template-card>
   </div>
 
   <!-- Botón de crear plantilla -->
@@ -35,4 +21,4 @@
       </div>
     </div>
   </div>
-</div> 
+</div>
