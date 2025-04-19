@@ -19,6 +19,9 @@ export class TemplateComponent implements OnInit {
     { id: '3', name: 'Día 2 Sem 2', exerciseCount: 2 }
   ];
 
+  showDeleteModal = false;
+  templateToDelete: Template | null = null;
+
   constructor(
     private headerService: HeaderService, 
     private navMenuService: NavMenuService
@@ -41,8 +44,21 @@ export class TemplateComponent implements OnInit {
   }
 
   deleteTemplate(template: Template) {
-    // TODO: Implementar la eliminación de la plantilla
-    console.log('Eliminar plantilla:', template);
+    this.templateToDelete = template;
+    this.showDeleteModal = true;
+  }
+
+  closeDeleteModal() {
+    this.showDeleteModal = false;
+    this.templateToDelete = null;
+  }
+
+  confirmDelete() {
+    if (this.templateToDelete) {
+      console.log('Eliminando plantilla:', this.templateToDelete);
+      // TODO: Implementar la eliminación real de la plantilla
+      this.closeDeleteModal();
+    }
   }
 
   createTemplate() {

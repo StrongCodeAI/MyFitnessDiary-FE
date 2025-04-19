@@ -36,4 +36,15 @@
   <button class="create-template-button" (click)="createTemplate()">
     Crear plantilla
   </button>
+
+  <!-- Modal de confirmación de eliminación -->
+  <div class="modal-overlay" *ngIf="showDeleteModal" (click)="closeDeleteModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h2>¿Seguro que deseas eliminar "{{ templateToDelete?.name }}"?</h2>
+      <div class="modal-buttons">
+        <button class="modal-button cancel" (click)="closeDeleteModal()">No</button>
+        <button class="modal-button confirm" (click)="confirmDelete()">Sí</button>
+      </div>
+    </div>
+  </div>
 </div> 
