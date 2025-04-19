@@ -65,6 +65,7 @@
   cursor: pointer;
   padding: 0 12px;
   transition: transform 0.3s ease;
+  color: var(--quinary-color);
 }
 
 .logout-button:hover {

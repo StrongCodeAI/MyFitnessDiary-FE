@@ -2,10 +2,12 @@ import { Component, Input } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { BackIconComponent } from '../icons/back-icon.component';
+import { LogoutIconComponent } from '../icons/logout-icon.component';
 
 @Component({
   selector: 'app-default-header',
-  imports: [CommonModule],
+  imports: [CommonModule, BackIconComponent, LogoutIconComponent],
   templateUrl: './default-header.component.html',
   styleUrls: ['./default-header.component.css']
 })
