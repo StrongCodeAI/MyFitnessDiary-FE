@@ -47,7 +47,6 @@ export class TemplateListComponent implements OnInit {
   }
 
   editTemplate(template: Template) {
-    console.log('Editar plantilla:', template);
     this.router.navigate(['/template-edit', template.id]);
   }
 

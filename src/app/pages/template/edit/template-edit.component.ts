@@ -18,10 +18,11 @@ import { DataManagementService } from '../../../services/data-management.service
 export class TemplateEditComponent implements OnInit {
   template: Template = {
     id: uuidv4(),
-    name: '',
+    name: 'Nueva Plantilla',
     exerciseCount: 0
   };
   isEditMode: boolean = false;
+  isLoading: boolean = true;
 
   constructor(
     private headerService: HeaderService,
@@ -38,16 +39,20 @@ export class TemplateEditComponent implements OnInit {
     const templateId = this.route.snapshot.paramMap.get('id');
     if (templateId) {
       this.isEditMode = true;
-      // TODO: Cargar la plantilla existente usando el ID
-      this.dataManagementService.getTemplateById(templateId).subscribe(template => {
-        this.template = template;
+      this.dataManagementService.getTemplateById(templateId).subscribe({
+        next: (template) => {
+          console.log('Plantilla cargada:', template);
+          this.template = template;
+          this.isLoading = false;
+        },
+        error: (error) => {
+          console.error('Error al cargar la plantilla:', error);
+          this.router.navigate(['/template-list']);
+          this.isLoading = false;
+        }
       });
     } else {
-      this.template = {
-        id: uuidv4(),
-        name: null,
-        exerciseCount: 0
-      };
+      this.isLoading = false;
     }
   }
 

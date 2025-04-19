@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable, of } from 'rxjs';
+import { map, Observable, of, catchError } from 'rxjs';
 import { Trainer } from '../models/trainer.interface';
 import { Template } from '../models/template.interface';
 import { v4 as uuidv4 } from 'uuid';
@@ -71,34 +71,35 @@ export class DataManagementService {
     return of(mockTrainers);
   }
 
+  mockTemplates: Template[] = [
+    {
+      id: uuidv4(),
+      name: 'Entrenamiento de 30 minutos',
+      exerciseCount: 10,
+    },
+    {
+      id: uuidv4(),
+      name: 'Entrenamiento de 45 minutos',
+      exerciseCount: 15,
+    },
+    {
+      id: uuidv4(),
+      name: 'Entrenamiento de 60 minutos',
+      exerciseCount: 20,
+    }
+  ]
+
   getTemplates(): Observable<Template[]> {
     // Datos mock de templates
-    const mockTemplates: Template[] = [
-      {
-        id: uuidv4(),
-        name: 'Entrenamiento de 30 minutos',
-        exerciseCount: 10,
-      },
-      {
-        id: uuidv4(),
-        name: 'Entrenamiento de 45 minutos',
-        exerciseCount: 15,
-      },
-      {
-        id: uuidv4(),
-        name: 'Entrenamiento de 60 minutos',
-        exerciseCount: 20,
-      }
-
-    ]
-    return of(mockTemplates);
+    return of(this.mockTemplates);
   }
 
   getTemplateById(templateId: string): Observable<Template> {
-    // Simular una llamada a la API para obtener la plantilla
-    return this.getTemplates().pipe(
-      map(templates => templates.find(t => t.id === templateId)!)
-    );
+    const template = this.mockTemplates.find(t => t.id === templateId);
+    if (!template) {
+      throw new Error(`No se encontró la plantilla con ID: ${templateId}`);
+    }
+    return of(template);
   }
 
 } 
