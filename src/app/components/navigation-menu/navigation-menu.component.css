@@ -30,7 +30,7 @@
 .nav-icon {
   width: 24px;
   height: 24px;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1rem;
   fill: color-mix(in srgb, var(--quinary-color) 50%, transparent);
   transition: fill 0.3s ease;
 }
