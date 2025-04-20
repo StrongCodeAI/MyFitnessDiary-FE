@@ -9,5 +9,12 @@ export interface Template {
         'reps': number;
         'time': number;        
     };
-    exercises?: DbExercise[];
+    exercises?: TemplateExercise[];
 } 
+
+export interface TemplateExercise extends DbExercise {
+    sets: number;
+    reps: number;
+    weight: number;
+    time: number;
+}
