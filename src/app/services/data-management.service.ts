@@ -3,7 +3,7 @@ import { map, Observable, of, catchError } from 'rxjs';
 import { Trainer } from '../models/trainer.interface';
 import { Template } from '../models/template.interface';
 import { v4 as uuidv4 } from 'uuid';
-import { Exercise } from '../models/exercise.interface';
+import { DbExercise } from '../models/dbExercise.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -118,7 +118,7 @@ export class DataManagementService {
     return of(template);
   }
 
-  mockExercises: Exercise[] = [
+  mockExercises: DbExercise[] = [
     {
       id: uuidv4(),
       name: 'Cinta de correr',
@@ -177,7 +177,7 @@ export class DataManagementService {
     }
   ]
 
-  getExercises(): Observable<Exercise[]> {
+  getExercises(): Observable<DbExercise[]> {
     return of(this.mockExercises);
   } 
 

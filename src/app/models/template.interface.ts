@@ -1,4 +1,4 @@
-import { Exercise } from './exercise.interface';
+import { DbExercise } from './dbExercise.interface';
 
 export interface Template {
     id: string;
@@ -9,5 +9,5 @@ export interface Template {
         'reps': number;
         'time': number;        
     };
-    exercises?: Exercise[];
+    exercises?: DbExercise[];
 } 

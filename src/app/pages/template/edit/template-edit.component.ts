@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderService } from '../../../services/header.service';
 import { NavMenuService } from '../../../services/nav-menu.service';
 import { Template } from '../../../models/template.interface';
-import { Exercise } from '../../../models/exercise.interface';
+import { DbExercise } from '../../../models/dbExercise.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { DataManagementService } from '../../../services/data-management.service';
 import { LoadingSpinnerComponent } from '../../../components/loading-spinner/loading-spinner.component';
@@ -31,12 +31,13 @@ export class TemplateEditComponent implements OnInit {
       'sets': 1,
       'reps': 10,
       'time': 5
-    }
+    },
+    exercises: []
   };
   isEditMode: boolean = false;
   isLoading: boolean = true;
-  selectedExercises: Exercise[] = [];
-  availableExercises: Exercise[] = [];
+  selectedExercises: DbExercise[] = [];
+  availableExercises: DbExercise[] = [];
 
   constructor(
     private headerService: HeaderService,
@@ -148,7 +149,7 @@ export class TemplateEditComponent implements OnInit {
     this.searchSubject.next(input.value);
   }
 
-  onSelectedChange(event: { exercise: Exercise, selected: boolean }) {
+  onSelectedChange(event: { exercise: DbExercise, selected: boolean }) {
     const { exercise, selected } = event;
     if (selected) {
       this.selectedExercises.push(exercise);

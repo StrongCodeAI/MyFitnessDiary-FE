@@ -1,4 +1,4 @@
-export interface Exercise {
+export interface DbExercise {
   id: string;
   name: string;
   type: 'SERIE' | 'CRONO';
