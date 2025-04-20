@@ -7,18 +7,7 @@ import { CarrierIconComponent } from "../icons/carrier-icon.component";
   selector: 'app-exercise-card',
   standalone: true,
   imports: [CommonModule, CarrierIconComponent],
-  template: `
-    <div class="exercise-card">
-      <div class="exercise-icon">
-        <img [src]="exercise.image" alt="exercise icon">
-      </div>
-      <div class="exercise-info">
-        <h3>{{ exercise.name }}</h3>
-        <p>{{ exercise.tags.join(', ') }}</p>
-      </div>
-      <app-carrier-icon></app-carrier-icon>
-    </div>
-  `,
+  templateUrl: './exercise-card.component.html',
   styleUrls: ['./exercise-card.component.css']
 })
 export class ExerciseCardComponent {
