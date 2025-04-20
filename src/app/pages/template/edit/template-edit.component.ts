@@ -9,7 +9,7 @@ import { Exercise } from '../../../models/exercise.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { DataManagementService } from '../../../services/data-management.service';
 import { LoadingSpinnerComponent } from '../../../components/loading-spinner/loading-spinner.component';
-import { ExerciseCardComponent } from '../../../components/exercise-card/info/exercise-card.component';
+import { ExerciseCardComponent } from '../../../components/exercise-card/exercise-card.component';
 import { of, Subject } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
 
