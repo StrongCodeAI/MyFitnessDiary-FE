@@ -8,6 +8,8 @@ import { Template } from '../../../models/template.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { DataManagementService } from '../../../services/data-management.service';
 import { LoadingSpinnerComponent } from '../../../components/loading-spinner/loading-spinner.component';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-template-edit',
@@ -17,6 +19,8 @@ import { LoadingSpinnerComponent } from '../../../components/loading-spinner/loa
   styleUrls: ['./template-edit.component.css']
 })
 export class TemplateEditComponent implements OnInit {
+  private searchSubject = new Subject<string>();
+  
   template: Template = {
     id: uuidv4(),
     name: 'Nueva Plantilla',
@@ -29,6 +33,7 @@ export class TemplateEditComponent implements OnInit {
   };
   isEditMode: boolean = false;
   isLoading: boolean = true;
+  selectedExercises: string[] = [];
 
   constructor(
     private headerService: HeaderService,
@@ -39,6 +44,13 @@ export class TemplateEditComponent implements OnInit {
   ) {
     this.headerService.setDefaultHeader(true);
     this.navMenuService.setNavMenuVisibility(false);
+
+    // Configurar el debounce para la búsqueda
+    this.searchSubject.pipe(
+      debounceTime(300) // Espera 300ms después de la última pulsación
+    ).subscribe(searchTerm => {
+      console.log('Búsqueda:', searchTerm);
+    });
   }
 
   ngOnInit() {
@@ -116,5 +128,10 @@ export class TemplateEditComponent implements OnInit {
 
   cancel() {
     this.router.navigate(['/template-list']);
+  }
+
+  onSearch(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.searchSubject.next(input.value);
   }
 } 

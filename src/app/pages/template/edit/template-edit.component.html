@@ -5,7 +5,7 @@
         [textContent]="template.name"
         data-placeholder="Nueva Plantilla">
     </h2>
-
+    <p> Elige tus valores por defecto:</p>
     <div class="template-properties">
       <div class="property">
         <span class="property-label">Series:</span>
@@ -30,6 +30,15 @@
         <span class="unit">min</span>
       </div>
     </div>
+
+    <div class="search-container">
+      <input type="text" 
+             class="search-input" 
+             placeholder="Buscar ejercicios..."
+             (input)="onSearch($event)">
+    </div>
+    
+    <p>{{selectedExercises.length}} añadidos</p>
   </div>
 </div> 
 <app-loading-spinner *ngIf="isLoading"></app-loading-spinner> 
