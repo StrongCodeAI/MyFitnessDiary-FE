@@ -79,7 +79,8 @@ export class DataManagementService {
       exerciseCount: 10,
       defaultProperties: {
         'sets': 3,
-        'reps': 10,
+        'reps': 20,
+        'weight': 20,
         'time': 30
       }
     },
@@ -90,6 +91,7 @@ export class DataManagementService {
       defaultProperties: {
         'sets': 3,
         'reps': 10,
+        'weight': 15,
         'time': 45
       }
     },
@@ -98,8 +100,9 @@ export class DataManagementService {
       name: 'Entrenamiento de 60 minutos',
       exerciseCount: 20,
       defaultProperties: {
-        'sets': 3,
-        'reps': 10,
+        'sets': 2,
+        'reps': 5,
+        'weight': 10,
         'time': 60
       }
     }

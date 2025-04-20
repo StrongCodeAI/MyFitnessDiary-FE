@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HeaderService } from '../../../services/header.service';
 import { NavMenuService } from '../../../services/nav-menu.service';
-import { Template } from '../../../models/template.interface';
+import { Template, TemplateExercise } from '../../../models/template.interface';
 import { DbExercise } from '../../../models/dbExercise.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { DataManagementService } from '../../../services/data-management.service';
@@ -22,6 +22,7 @@ import { debounceTime, switchMap } from 'rxjs/operators';
 })
 export class TemplateEditComponent implements OnInit {
   private searchSubject = new Subject<string>();
+  selectedExercises: TemplateExercise[] = [];
 
   template: Template = {
     id: uuidv4(),
@@ -30,13 +31,13 @@ export class TemplateEditComponent implements OnInit {
     defaultProperties: {
       'sets': 1,
       'reps': 10,
+      'weight': 10,
       'time': 5
     },
-    exercises: []
+    exercises: this.selectedExercises
   };
   isEditMode: boolean = false;
   isLoading: boolean = true;
-  selectedExercises: DbExercise[] = [];
   availableExercises: DbExercise[] = [];
 
   constructor(
@@ -140,22 +141,31 @@ export class TemplateEditComponent implements OnInit {
     this.router.navigate(['/template-list']);
   }
 
-  cancel() {
-    this.router.navigate(['/template-list']);
-  }
-
   onSearch(event: Event) {
     const input = event.target as HTMLInputElement;
     this.searchSubject.next(input.value);
   }
 
+  getExerciseSelected(exercise: DbExercise): boolean {
+    return this.selectedExercises.some(e => e.id === exercise.id);
+  }
+
   onSelectedChange(event: { exercise: DbExercise, selected: boolean }) {
     const { exercise, selected } = event;
     if (selected) {
-      this.selectedExercises.push(exercise);
+      const templateExercise: TemplateExercise = {
+        ...exercise,
+        sets: this.template.defaultProperties.sets,
+        reps: this.template.defaultProperties.reps,
+        weight: this.template.defaultProperties.weight,
+        time: this.template.defaultProperties.time
+      };
+      this.selectedExercises.push(templateExercise);
+      this.template.exerciseCount = this.selectedExercises.length;
     } else {
-      this.selectedExercises = this.selectedExercises.filter(e => e !== exercise);
+      this.selectedExercises = this.selectedExercises.filter(e => e.id !== exercise.id);
+      this.template.exerciseCount = this.selectedExercises.length;
     }
-    console.log(this.selectedExercises);
+    console.log(this.template);
   }
 } 

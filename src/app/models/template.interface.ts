@@ -7,6 +7,7 @@ export interface Template {
     defaultProperties: {
         'sets': number;
         'reps': number;
+        'weight': number;
         'time': number;        
     };
     exercises?: TemplateExercise[];

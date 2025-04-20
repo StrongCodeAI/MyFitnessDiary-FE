@@ -35,7 +35,8 @@
 
   <div class="exercises-container">
     <app-exercise-card *ngFor="let exercise of availableExercises" [exercise]="exercise"
-      [selected]="selectedExercises.includes(exercise)" (selectedChange)="onSelectedChange($event)"></app-exercise-card>
+      [selected]="getExerciseSelected(exercise)"
+      (selectedChange)="onSelectedChange($event)"></app-exercise-card>
   </div>
 </div>
 <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
