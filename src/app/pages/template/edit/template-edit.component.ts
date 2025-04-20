@@ -5,22 +5,24 @@ import { FormsModule } from '@angular/forms';
 import { HeaderService } from '../../../services/header.service';
 import { NavMenuService } from '../../../services/nav-menu.service';
 import { Template } from '../../../models/template.interface';
+import { Exercise } from '../../../models/exercise.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { DataManagementService } from '../../../services/data-management.service';
 import { LoadingSpinnerComponent } from '../../../components/loading-spinner/loading-spinner.component';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { ExerciseCardComponent } from '../../../components/exercise-card/exercise-card.component';
+import { of, Subject } from 'rxjs';
+import { debounceTime, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-template-edit',
   standalone: true,
-  imports: [CommonModule, FormsModule, LoadingSpinnerComponent],
+  imports: [CommonModule, FormsModule, LoadingSpinnerComponent, ExerciseCardComponent],
   templateUrl: './template-edit.component.html',
   styleUrls: ['./template-edit.component.css']
 })
 export class TemplateEditComponent implements OnInit {
   private searchSubject = new Subject<string>();
-  
+
   template: Template = {
     id: uuidv4(),
     name: 'Nueva Plantilla',
@@ -33,7 +35,8 @@ export class TemplateEditComponent implements OnInit {
   };
   isEditMode: boolean = false;
   isLoading: boolean = true;
-  selectedExercises: string[] = [];
+  selectedExercises: Exercise[] = [];
+  availableExercises: Exercise[] = [];
 
   constructor(
     private headerService: HeaderService,
@@ -45,33 +48,43 @@ export class TemplateEditComponent implements OnInit {
     this.headerService.setDefaultHeader(true);
     this.navMenuService.setNavMenuVisibility(false);
 
-    // Configurar el debounce para la búsqueda
     this.searchSubject.pipe(
-      debounceTime(300) // Espera 300ms después de la última pulsación
+      debounceTime(300)
     ).subscribe(searchTerm => {
       console.log('Búsqueda:', searchTerm);
     });
   }
 
   ngOnInit() {
-    const templateId = this.route.snapshot.paramMap.get('id');
-    if (templateId) {
-      this.isEditMode = true;
-      this.dataManagementService.getTemplateById(templateId).subscribe({
-        next: (template) => {
+    this.isLoading = true;
+
+    this.dataManagementService.getExercises().pipe(
+      switchMap((exercises) => {
+        this.availableExercises = exercises;
+
+        const templateId = this.route.snapshot.paramMap.get('id');
+        if (templateId) {
+          this.isEditMode = true;
+          return this.dataManagementService.getTemplateById(templateId);
+        } else {
+          return of(null);
+        }
+      })
+    ).subscribe({
+      next: (template) => {
+        if (template) {
           console.log('Plantilla cargada:', template);
           this.template = template;
-          this.isLoading = false;
-        },
-        error: (error) => {
-          console.error('Error al cargar la plantilla:', error);
-          this.router.navigate(['/template-list']);
-          this.isLoading = false;
+          this.selectedExercises = template.exercises || [];
         }
-      });
-    } else {
-      this.isLoading = false;
-    }
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error('Error durante la carga:', error);
+        this.router.navigate(['/template-list']);
+        this.isLoading = false;
+      }
+    });
   }
 
   onTitleBlur(event: Event) {
@@ -88,7 +101,7 @@ export class TemplateEditComponent implements OnInit {
   onPropertyChange(event: Event, property: 'sets' | 'reps' | 'time') {
     const target = event.target as HTMLElement;
     const value = parseInt(target.textContent?.trim() || '0');
-    
+
     if (isNaN(value)) {
       target.textContent = this.template.defaultProperties[property].toString();
       return;
@@ -111,7 +124,7 @@ export class TemplateEditComponent implements OnInit {
     if (finalValue !== value) {
       target.textContent = finalValue.toString();
     }
-    
+
     this.template.defaultProperties[property] = finalValue;
   }
 

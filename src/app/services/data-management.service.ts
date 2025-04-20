@@ -3,6 +3,7 @@ import { map, Observable, of, catchError } from 'rxjs';
 import { Trainer } from '../models/trainer.interface';
 import { Template } from '../models/template.interface';
 import { v4 as uuidv4 } from 'uuid';
+import { Exercise } from '../models/exercise.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -116,5 +117,68 @@ export class DataManagementService {
     }
     return of(template);
   }
+
+  mockExercises: Exercise[] = [
+    {
+      id: uuidv4(),
+      name: 'Cinta de correr',
+      type: 'CRONO',
+      tags: ['cinta', 'cardio', 'caminar'],
+      image: 'https://images.unsplash.com/vector-1741267133085-fd8ee32e56b5?q=80&w=2360&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    },
+    {
+      id: uuidv4(),
+      name: 'Sentadilla',
+      type: 'SERIE',
+      tags: ['pierna', 'sentadilla'],
+      image: 'https://media.istockphoto.com/id/1306353165/es/vector/joven-afroamericana-mujer-en-ropa-deportiva-haciendo-sentadillas-en-la-alfombra.jpg?s=612x612&w=0&k=20&c=fT7aKUWYw0rqVYn54i7zo6-RHsEFAl_MrY0voH33l8w='
+    },
+    {
+      id: uuidv4(),
+      name: 'Saltar la cuerda',
+      type: 'CRONO',
+      tags: ['cuerda', 'cardio', 'saltar'],
+      image: 'https://static.vecteezy.com/system/resources/previews/036/390/541/non_2x/a-man-skipping-with-a-jump-rope-a-man-wearing-a-sleeveless-t-shirt-and-tight-shorts-vector.jpg'
+    },
+    {
+      id: uuidv4(),
+      name: 'Peso muerto',
+      type: 'SERIE',
+      tags: ['pierna', 'peso muerto'],
+      image: 'https://media.istockphoto.com/id/1249228259/es/vector/mujeres-haciendo-barbell-deadlift-entrenamiento-vista-lateral.jpg?s=612x612&w=0&k=20&c=_RbEsHcDAVqMEQXcJCDe1Uzk2DA5gVrjsfOidFo1gRU='
+    },
+    {
+      id: uuidv4(),
+      name: 'Curl martillo',
+      type: 'SERIE',
+      tags: ['biceps', 'curl martillo'],
+      image: 'https://static.vecteezy.com/system/resources/previews/030/216/221/non_2x/man-doing-seated-dumbbell-bicep-hammer-curls-exercise-vector.jpg'
+    },
+    {
+      id: uuidv4(),
+      name: 'Press banca',
+      type: 'SERIE',
+      tags: ['pectorales', 'press banca'],
+      image: 'https://media.istockphoto.com/id/1028234906/es/vector/hombre-trabajando-con-barra-tumbado-en-un-banco-press-de-banca-colorido-isom%C3%A9trica-figura.jpg?s=612x612&w=0&k=20&c=DuCUuK5sq0mSJ0z7cWVKzVbcNdUy5OjJ_conZyjUYuo='
+    },
+    {
+      id: uuidv4(),
+      name: 'Caminata en pendiente',
+      type: 'CRONO',
+      tags: ['caminar', 'pendiente', 'cardio'],
+      image: 'https://media.istockphoto.com/id/925492594/es/vector/hombre-en-la-ilustraci%C3%B3n-del-icono-de-cinta-de-correr.jpg?s=612x612&w=0&k=20&c=5Z9DnLnXYTHRgDWRyi0OZNplsvZXwhih2fxw32mozPQ='
+    },
+    {
+      id: uuidv4(),
+      name: 'Russian Twists',
+      type: 'SERIE',
+      tags: ['abdominales', 'russian twists'],
+      image: 'https://t3.ftcdn.net/jpg/02/62/56/28/360_F_262562893_FRyE74UesGLF5qVDLzVcU13obDhUBzbH.jpg'
+    }
+  ]
+
+  getExercises(): Observable<Exercise[]> {
+    return of(this.mockExercises);
+  } 
 
 } 

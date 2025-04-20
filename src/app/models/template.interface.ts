@@ -1,3 +1,5 @@
+import { Exercise } from './exercise.interface';
+
 export interface Template {
     id: string;
     name: string;
@@ -7,4 +9,5 @@ export interface Template {
         'reps': number;
         'time': number;        
     };
+    exercises?: Exercise[];
 } 

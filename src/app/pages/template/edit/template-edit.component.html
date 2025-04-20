@@ -1,44 +1,41 @@
 <div class="template-edit-container" *ngIf="!isLoading">
   <div class="template-form">
-    <h2 id="editable-title" class="editable-title" contenteditable="true" 
-        (blur)="onTitleBlur($event)"
-        [textContent]="template.name"
-        data-placeholder="Nueva Plantilla">
+    <h2 id="editable-title" class="editable-title" contenteditable="true" (blur)="onTitleBlur($event)"
+      [textContent]="template.name" data-placeholder="Nueva Plantilla">
     </h2>
     <p> Elige tus valores por defecto:</p>
     <div class="template-properties">
       <div class="property">
         <span class="property-label">Series:</span>
-        <span class="property-value" contenteditable="true" 
-              (blur)="onPropertyChange($event, 'sets')"
-              [textContent]="template.defaultProperties.sets">
+        <span class="property-value" contenteditable="true" (blur)="onPropertyChange($event, 'sets')"
+          [textContent]="template.defaultProperties.sets">
         </span>
       </div>
       <div class="property">
         <span class="property-label">Repeticiones:</span>
-        <span class="property-value" contenteditable="true"
-              (blur)="onPropertyChange($event, 'reps')"
-              [textContent]="template.defaultProperties.reps">
+        <span class="property-value" contenteditable="true" (blur)="onPropertyChange($event, 'reps')"
+          [textContent]="template.defaultProperties.reps">
         </span>
       </div>
       <div class="property">
         <span class="property-label">Tiempo:</span>
-        <span class="property-value" contenteditable="true"
-              (blur)="onPropertyChange($event, 'time')"
-              [textContent]="template.defaultProperties.time">
+        <span class="property-value" contenteditable="true" (blur)="onPropertyChange($event, 'time')"
+          [textContent]="template.defaultProperties.time">
         </span>
         <span class="unit">min</span>
       </div>
     </div>
 
     <div class="search-container">
-      <input type="text" 
-             class="search-input" 
-             placeholder="Buscar ejercicios..."
-             (input)="onSearch($event)">
+      <input type="text" class="search-input" placeholder="Buscar ejercicios..." (input)="onSearch($event)">
     </div>
-    
+
     <p>{{selectedExercises.length}} añadidos</p>
   </div>
-</div> 
-<app-loading-spinner *ngIf="isLoading"></app-loading-spinner> 
+
+  <div class="exercises-container">
+    <app-exercise-card *ngFor="let exercise of availableExercises" [exercise]="exercise">
+    </app-exercise-card>
+  </div>
+</div>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
