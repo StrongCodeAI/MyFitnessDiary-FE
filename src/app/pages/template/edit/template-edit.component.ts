@@ -20,7 +20,12 @@ export class TemplateEditComponent implements OnInit {
   template: Template = {
     id: uuidv4(),
     name: 'Nueva Plantilla',
-    exerciseCount: 0
+    exerciseCount: 0,
+    defaultProperties: {
+      'sets': 1,
+      'reps': 10,
+      'time': 5
+    }
   };
   isEditMode: boolean = false;
   isLoading: boolean = true;
@@ -57,17 +62,45 @@ export class TemplateEditComponent implements OnInit {
     }
   }
 
-  onTitleChange(event: Event) {
-    const target = event.target as HTMLElement;
-    this.template.name = target.textContent || '';
-  }
-
   onTitleBlur(event: Event) {
     const target = event.target as HTMLElement;
+    console.log(target.textContent);
     if (!target.textContent?.trim()) {
       target.textContent = this.isEditMode ? 'Editar Plantilla' : 'Nueva Plantilla';
       this.template.name = '';
+    } else {
+      this.template.name = target.textContent;
     }
+  }
+
+  onPropertyChange(event: Event, property: 'sets' | 'reps' | 'time') {
+    const target = event.target as HTMLElement;
+    const value = parseInt(target.textContent?.trim() || '0');
+    
+    if (isNaN(value)) {
+      target.textContent = this.template.defaultProperties[property].toString();
+      return;
+    }
+
+    // Establecer valores mínimos para cada propiedad
+    let finalValue = value;
+    switch (property) {
+      case 'sets':
+        finalValue = Math.max(1, value);
+        break;
+      case 'reps':
+        finalValue = Math.max(1, value);
+        break;
+      case 'time':
+        finalValue = Math.max(1, value);
+        break;
+    }
+
+    if (finalValue !== value) {
+      target.textContent = finalValue.toString();
+    }
+    
+    this.template.defaultProperties[property] = finalValue;
   }
 
   saveTemplate() {

@@ -1,13 +1,35 @@
 <div class="template-edit-container" *ngIf="!isLoading">
   <div class="template-form">
-    <h2 class="editable-title" contenteditable="true" (input)="onTitleChange($event)" (blur)="onTitleBlur($event)">
-      {{ template.name || 'Nueva Plantilla' }}
+    <h2 id="editable-title" class="editable-title" contenteditable="true" 
+        (blur)="onTitleBlur($event)"
+        [textContent]="template.name"
+        data-placeholder="Nueva Plantilla">
     </h2>
-  </div>
 
-  <div class="form-actions">
-    <button class="cancel-button" (click)="cancel()">Cancelar</button>
-    <button class="save-button" (click)="saveTemplate()">Guardar</button>
+    <div class="template-properties">
+      <div class="property">
+        <span class="property-label">Series:</span>
+        <span class="property-value" contenteditable="true" 
+              (blur)="onPropertyChange($event, 'sets')"
+              [textContent]="template.defaultProperties.sets">
+        </span>
+      </div>
+      <div class="property">
+        <span class="property-label">Repeticiones:</span>
+        <span class="property-value" contenteditable="true"
+              (blur)="onPropertyChange($event, 'reps')"
+              [textContent]="template.defaultProperties.reps">
+        </span>
+      </div>
+      <div class="property">
+        <span class="property-label">Tiempo:</span>
+        <span class="property-value" contenteditable="true"
+              (blur)="onPropertyChange($event, 'time')"
+              [textContent]="template.defaultProperties.time">
+        </span>
+        <span class="unit">min</span>
+      </div>
+    </div>
   </div>
 </div> 
 <app-loading-spinner *ngIf="isLoading"></app-loading-spinner> 
