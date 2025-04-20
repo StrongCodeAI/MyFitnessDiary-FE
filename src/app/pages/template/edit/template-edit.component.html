@@ -36,6 +36,7 @@
   <div class="exercises-container">
     <app-exercise-card *ngFor="let exercise of availableExercises" [exercise]="exercise"
       [selected]="getExerciseSelected(exercise)"
+      [properties]="template.defaultProperties"
       (selectedChange)="onSelectedChange($event)"></app-exercise-card>
   </div>
 </div>

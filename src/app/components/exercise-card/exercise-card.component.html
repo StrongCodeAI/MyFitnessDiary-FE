@@ -11,3 +11,11 @@
         <app-trashcan-icon *ngIf="selected"></app-trashcan-icon>
     </div>
 </div>
+<div class="exercise-properties">
+    <div class="exercise-serie" *ngFor="let serie of [].constructor(properties.sets); let i = index">
+        <p>Serie {{ i + 1 }}</p>
+        <p>{{ properties.reps }} reps</p>
+        <p>{{ properties.weight }} kg</p>
+        <p>{{ properties.time }} min</p>
+    </div>
+</div>

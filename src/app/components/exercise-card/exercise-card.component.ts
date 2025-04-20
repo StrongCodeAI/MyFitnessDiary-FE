@@ -14,6 +14,7 @@ import { TrashcanIconComponent } from "../icons/trashcan-icon.component";
 export class ExerciseCardComponent {
   @Input() exercise!: DbExercise;
   @Input() selected: boolean = false;
+  @Input() properties: { sets: number, reps: number, weight: number, time: number } = { sets: 0, reps: 0, weight: 0, time: 0 };
 
   @Output() selectedChange = new EventEmitter<{ exercise: DbExercise, selected: boolean }>();
 
