@@ -6,5 +6,8 @@
         <h3>{{ exercise.name }}</h3>
         <p>{{ exercise.tags.join(', ') }}</p>
     </div>
-    <app-carrier-icon></app-carrier-icon>
+    <div class="exercise-selected" (click)="onSelectedChange(!selected)">
+        <app-carrier-icon *ngIf="!selected"></app-carrier-icon>
+        <app-trashcan-icon *ngIf="selected"></app-trashcan-icon>
+    </div>
 </div>

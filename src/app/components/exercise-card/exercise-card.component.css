@@ -37,3 +37,12 @@
   font-size: 0.8rem;
   color: var(--quaternary-color);
 }
+
+.exercise-selected {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.exercise-selected:hover {
+  color: var(--primary-color);
+}

@@ -147,4 +147,14 @@ export class TemplateEditComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     this.searchSubject.next(input.value);
   }
+
+  onSelectedChange(event: { exercise: Exercise, selected: boolean }) {
+    const { exercise, selected } = event;
+    if (selected) {
+      this.selectedExercises.push(exercise);
+    } else {
+      this.selectedExercises = this.selectedExercises.filter(e => e !== exercise);
+    }
+    console.log(this.selectedExercises);
+  }
 } 
