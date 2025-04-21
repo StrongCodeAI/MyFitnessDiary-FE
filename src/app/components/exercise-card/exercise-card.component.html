@@ -25,8 +25,14 @@
     <div class="exercise-properties" *ngIf="selected">
         <div class="exercise-serie" *ngFor="let serie of [].constructor(properties.sets); let i = index">
             <p class="exercise-serie-number">Serie {{ i + 1 }}</p>
-            <p class="exercise-serie-reps">{{ properties.reps }} Repeticiones</p>
-            <p class="exercise-serie-weight">{{ properties.weight }} kg/lbs</p>
+            <p>
+                <span class="exercise-serie-reps">{{ properties.reps }}</span>
+                <span class="exercise-serie-reps-unit">Reps</span>
+            </p>
+            <p>
+                <span class="exercise-serie-weight">{{ properties.weight }}</span>
+                <span class="exercise-serie-weight-unit">kg/lbs</span>
+            </p>
         </div>
     </div>
 </div>

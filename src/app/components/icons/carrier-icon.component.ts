@@ -14,8 +14,8 @@ import { CommonModule } from '@angular/common';
   `,
   styles: [`
     .carrier-icon {
-      width: 14px;
-      height: 16px;
+      width: 21px;
+      height: 21px;
     }
   `]
 })

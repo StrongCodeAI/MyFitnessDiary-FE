@@ -34,7 +34,7 @@
 
 .exercise-info h3 {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: bold;
   color: black;
 }
@@ -97,19 +97,20 @@
 
 .exercise-serie p {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   font-weight: bold;
 }
 
-.exercise-serie-number {
-  font-size: 1rem;
-}
-
 .exercise-serie-reps {
-  font-size: 1rem;
+  margin-right: 5px;
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .exercise-serie-weight {
-  font-size: 1rem;
+  margin-right: 5px; 
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 5px;
 }
-
