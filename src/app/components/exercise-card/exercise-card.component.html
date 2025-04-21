@@ -1,21 +1,32 @@
-<div class="exercise-card">
-    <div class="exercise-icon">
-        <img [src]="exercise.image" alt="exercise icon">
+<div class="exercise-card-container">
+    <div class="exercise-card">
+        <div class="exercise-icon">
+            <img [src]="exercise.image" alt="exercise icon">
+        </div>
+        <div class="exercise-info">
+            <h3>{{ exercise.name }}</h3>
+            <p>{{ exercise.tags.join(', ') }}</p>
+        </div>
+        <div class="exercise-selection">
+            <div class="exercise-selected" (click)="onSelectedChange(!selected)">
+                <app-carrier-icon *ngIf="!selected"></app-carrier-icon>
+                <app-trashcan-icon *ngIf="selected"></app-trashcan-icon>
+            </div>
+            <div class="exercise-serie-icons-space">
+                <div class="exercise-empty-space" *ngIf="!selected"></div>
+                <div class="exercise-serie-icon" *ngIf="selected">
+                    <app-plus-circle-icon></app-plus-circle-icon>
+                    <app-minus-circle-icon></app-minus-circle-icon>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="exercise-info">
-        <h3>{{ exercise.name }}</h3>
-        <p>{{ exercise.tags.join(', ') }}</p>
-    </div>
-    <div class="exercise-selected" (click)="onSelectedChange(!selected)">
-        <app-carrier-icon *ngIf="!selected"></app-carrier-icon>
-        <app-trashcan-icon *ngIf="selected"></app-trashcan-icon>
-    </div>
-</div>
-<div class="exercise-properties">
-    <div class="exercise-serie" *ngFor="let serie of [].constructor(properties.sets); let i = index">
-        <p>Serie {{ i + 1 }}</p>
-        <p>{{ properties.reps }} reps</p>
-        <p>{{ properties.weight }} kg</p>
-        <p>{{ properties.time }} min</p>
+
+    <div class="exercise-properties" *ngIf="selected">
+        <div class="exercise-serie" *ngFor="let serie of [].constructor(properties.sets); let i = index">
+            <p class="exercise-serie-number">Serie {{ i + 1 }}</p>
+            <p class="exercise-serie-reps">{{ properties.reps }} Repeticiones</p>
+            <p class="exercise-serie-weight">{{ properties.weight }} kg/lbs</p>
+        </div>
     </div>
 </div>

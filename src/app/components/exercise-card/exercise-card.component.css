@@ -1,10 +1,17 @@
+.exercise-card-container {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--primary-color);
+  width: 95%;
+  margin: 0 auto;
+}
+
 .exercise-card {
   display: flex;
   align-items: center;
   padding: 0px 10px;
   gap: 15px;
-  margin: 20px 10px;
-  border-bottom: 1px solid var(--primary-color);
+  margin: 20px 10px 0px 10px;
 }
 
 .exercise-icon {
@@ -27,7 +34,7 @@
 
 .exercise-info h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: black;
 }
@@ -38,6 +45,12 @@
   color: var(--quaternary-color);
 }
 
+.exercise-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .exercise-selected {
   cursor: pointer;
   padding: 10px;
@@ -47,14 +60,56 @@
   color: var(--primary-color);
 }
 
+.exercise-serie-icons-space {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.exercise-serie-icons-space:hover {
+  color: var(--primary-color);
+}
+
+.exercise-serie-icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 35px;
+  height: 20px;
+}
+
 .exercise-properties {
   display: flex;
   flex-direction: column;
-  max-width: 80%;
+  width: 80%;
   margin: 0 auto;
 }
 
 .exercise-serie {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+.exercise-serie p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.exercise-serie-number {
+  font-size: 1rem;
+}
+
+.exercise-serie-reps {
+  font-size: 1rem;
+}
+
+.exercise-serie-weight {
+  font-size: 1rem;
+}
+

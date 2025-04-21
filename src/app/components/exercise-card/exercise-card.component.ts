@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { DbExercise } from '../../models/dbExercise.interface';
 import { CarrierIconComponent } from "../icons/carrier-icon.component";
 import { TrashcanIconComponent } from "../icons/trashcan-icon.component";
+import { PlusCircleIconComponent } from '../icons/plus-circle-icon.component';
+import { MinusCircleIconComponent } from '../icons/minus-circle-icon.component';
 
 @Component({
   selector: 'app-exercise-card',
   standalone: true,
-  imports: [CommonModule, CarrierIconComponent, TrashcanIconComponent],
+  imports: [CommonModule, CarrierIconComponent, TrashcanIconComponent, PlusCircleIconComponent, MinusCircleIconComponent],
   templateUrl: './exercise-card.component.html',
   styleUrls: ['./exercise-card.component.css']
 })
