@@ -3,7 +3,6 @@ import { DbExercise } from './dbExercise.interface';
 export interface Template {
     id: string;
     name: string;
-    exerciseCount: number;
     defaultProperties: {
         'sets': number;
         'reps': number;
@@ -14,8 +13,9 @@ export interface Template {
 } 
 
 export interface TemplateExercise extends DbExercise {
-    sets: number;
-    reps: number;
-    weight: number;
-    time: number;
+    sets: {
+        reps: number;
+        weight: number;
+        time: number;
+    }[];
 }

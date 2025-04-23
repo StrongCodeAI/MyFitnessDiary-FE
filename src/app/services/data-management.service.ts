@@ -76,7 +76,6 @@ export class DataManagementService {
     {
       id: uuidv4(),
       name: 'Entrenamiento de 30 minutos',
-      exerciseCount: 10,
       defaultProperties: {
         'sets': 3,
         'reps': 20,
@@ -87,7 +86,6 @@ export class DataManagementService {
     {
       id: uuidv4(),
       name: 'Entrenamiento de 45 minutos',
-      exerciseCount: 15,
       defaultProperties: {
         'sets': 3,
         'reps': 10,
@@ -98,7 +96,6 @@ export class DataManagementService {
     {
       id: uuidv4(),
       name: 'Entrenamiento de 60 minutos',
-      exerciseCount: 20,
       defaultProperties: {
         'sets': 2,
         'reps': 5,
