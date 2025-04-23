@@ -13,6 +13,13 @@ import { ExerciseCardComponent } from '../../../components/exercise-card/exercis
 import { of, Subject } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
 
+export const defaultProperties = {
+  'sets': 1,
+  'reps': 10,
+  'weight': 0,
+  'time': 5
+};
+
 @Component({
   selector: 'app-template-edit',
   standalone: true,
@@ -22,24 +29,20 @@ import { debounceTime, switchMap } from 'rxjs/operators';
 })
 export class TemplateEditComponent implements OnInit {
   private searchSubject = new Subject<string>();
+
+  availableExercises: DbExercise[] = [];
+  filteredExercises: DbExercise[] = [];
   selectedExercises: TemplateExercise[] = [];
 
   template: Template = {
     id: uuidv4(),
     name: 'Nueva Plantilla',
-    exerciseCount: 0,
-    defaultProperties: {
-      'sets': 1,
-      'reps': 10,
-      'weight': 10,
-      'time': 5
-    },
+    defaultProperties: defaultProperties,
     exercises: this.selectedExercises
   };
   isEditMode: boolean = false;
   isLoading: boolean = true;
-  availableExercises: DbExercise[] = [];
-
+ 
   constructor(
     private headerService: HeaderService,
     private navMenuService: NavMenuService,
@@ -51,8 +54,13 @@ export class TemplateEditComponent implements OnInit {
     this.navMenuService.setNavMenuVisibility(false);
 
     this.searchSubject.pipe(
-      debounceTime(300)
+      debounceTime(250)
     ).subscribe(searchTerm => {
+      if (searchTerm.length > 0) {
+        this.filteredExercises = this.availableExercises.filter(exercise => exercise.name.toLowerCase().includes(searchTerm.toLowerCase()));
+      } else {
+        this.filteredExercises = this.availableExercises;
+      }
       console.log('Búsqueda:', searchTerm);
     });
   }
@@ -60,24 +68,30 @@ export class TemplateEditComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
 
+    // Get the full list of exercises stored in the database
     this.dataManagementService.getExercises().pipe(
       switchMap((exercises) => {
+        // Store the full list of exercises in the component
         this.availableExercises = exercises;
+        this.filteredExercises = exercises;
 
+        // Get the template ID from the route
         const templateId = this.route.snapshot.paramMap.get('id');
+        // If the template ID is not null, the template is being edited
         if (templateId) {
           this.isEditMode = true;
+          // Get the template from the database
           return this.dataManagementService.getTemplateById(templateId);
         } else {
+          // If the template ID is null, the template is being created
           return of(null);
         }
       })
     ).subscribe({
       next: (template) => {
+        // If the template is not null, the template is being edited
         if (template) {
           console.log('Plantilla cargada:', template);
-          this.template = template;
-          this.selectedExercises = template.exercises || [];
         }
         this.isLoading = false;
       },
@@ -146,26 +160,35 @@ export class TemplateEditComponent implements OnInit {
     this.searchSubject.next(input.value);
   }
 
-  getExerciseSelected(exercise: DbExercise): boolean {
+  isExerciseSelected(exercise: DbExercise): boolean {
     return this.selectedExercises.some(e => e.id === exercise.id);
+  }
+
+  // When the user selects an exercise, it is stored in the selectedExercises array
+  // This function is used to keep track of the "templateExercise" object that is stored in the selectedExercises array
+  // And to update it when the user changes the "series", "reps", "weight" or "time" of the exercise
+  getTemplateExercise(exercise: DbExercise): TemplateExercise {
+    return this.selectedExercises.find(e => e.id === exercise.id) as TemplateExercise;
   }
 
   onSelectedChange(event: { exercise: DbExercise, selected: boolean }) {
     const { exercise, selected } = event;
     if (selected) {
+      // If the exercise is selected, it is added to the selectedExercises array
+      // And a new "templateExercise" object is created with the default properties
       const templateExercise: TemplateExercise = {
         ...exercise,
-        sets: this.template.defaultProperties.sets,
-        reps: this.template.defaultProperties.reps,
-        weight: this.template.defaultProperties.weight,
-        time: this.template.defaultProperties.time
+        sets: Array(this.template.defaultProperties.sets).fill(null).map(() => ({
+          reps: this.template.defaultProperties.reps,
+          weight: this.template.defaultProperties.weight,
+          time: this.template.defaultProperties.time
+        }))
       };
       this.selectedExercises.push(templateExercise);
-      this.template.exerciseCount = this.selectedExercises.length;
     } else {
+      // If the exercise is not selected, it is removed from the selectedExercises array
       this.selectedExercises = this.selectedExercises.filter(e => e.id !== exercise.id);
-      this.template.exerciseCount = this.selectedExercises.length;
     }
-    console.log(this.template);
+    console.log(this.selectedExercises);
   }
 } 

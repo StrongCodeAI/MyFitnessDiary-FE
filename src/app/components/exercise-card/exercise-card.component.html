@@ -16,19 +16,19 @@
     </div>
 
     <div class="exercise-properties" *ngIf="selected">
-        <div class="exercise-serie" *ngFor="let serie of [].constructor(properties.sets); let i = index">
+        <div class="exercise-serie" *ngFor="let serie of [].constructor(templateExercise.sets.length); let i = index">
             <p class="exercise-serie-number">Serie {{ i + 1 }}</p>
             <p>
-                <span class="exercise-serie-reps">{{ properties.reps }}</span>
+                <span class="exercise-serie-reps">{{ templateExercise.sets[i].reps }}</span>
                 <span class="exercise-serie-reps-unit">Reps</span>
             </p>
             <p>
-                <span class="exercise-serie-weight">{{ properties.weight }}</span>
+                <span class="exercise-serie-weight">{{ templateExercise.sets[i].weight }}</span>
                 <span class="exercise-serie-weight-unit">kg/lbs</span>
             </p>
             <p class="exercise-serie-add-serie">
-                <app-minus-circle-icon (click)="removeSerie()"></app-minus-circle-icon>
-                <app-plus-circle-icon *ngIf="i === properties.sets - 1"
+                <app-minus-circle-icon *ngIf="templateExercise.sets.length != 1" (click)="removeSerie(i)"></app-minus-circle-icon>
+                <app-plus-circle-icon *ngIf="i === templateExercise.sets.length - 1"
                 (click)="addSerie()"
                 ></app-plus-circle-icon>
                 <!--<app-plus-circle-icon *ngIf="i === properties.sets - 1; else emptySpace"></app-plus-circle-icon>

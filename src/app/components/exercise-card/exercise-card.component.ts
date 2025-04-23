@@ -5,7 +5,9 @@ import { CarrierIconComponent } from "../icons/carrier-icon.component";
 import { TrashcanIconComponent } from "../icons/trashcan-icon.component";
 import { PlusCircleIconComponent } from '../icons/plus-circle-icon.component';
 import { MinusCircleIconComponent } from '../icons/minus-circle-icon.component';
-
+import { defaultProperties } from '../../pages/template/edit/template-edit.component';
+import { TemplateExercise } from '../../models/template.interface';
+ 
 @Component({
   selector: 'app-exercise-card',
   standalone: true,
@@ -15,8 +17,9 @@ import { MinusCircleIconComponent } from '../icons/minus-circle-icon.component';
 })
 export class ExerciseCardComponent {
   @Input() exercise!: DbExercise;
+  @Input() templateExercise!: TemplateExercise;
   @Input() selected: boolean = false;
-  @Input() properties: { sets: number, reps: number, weight: number, time: number } = { sets: 0, reps: 0, weight: 0, time: 0 };
+  @Input() defaultProperties = defaultProperties;
 
   @Output() selectedChange = new EventEmitter<{ exercise: DbExercise, selected: boolean }>();
 
@@ -25,10 +28,16 @@ export class ExerciseCardComponent {
   }
 
   addSerie() {
-    this.properties.sets++;
+    this.templateExercise.sets.push({
+      reps: defaultProperties.reps,
+      weight: defaultProperties.weight,
+      time: defaultProperties.time
+    });
+    console.log(this.templateExercise);
   }
 
-  removeSerie() {
-    this.properties.sets--;
+  removeSerie(i: number) {
+    this.templateExercise.sets.splice(i, 1);
+    console.log(this.templateExercise);
   }
 } 
