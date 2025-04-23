@@ -1,7 +1,7 @@
 <div class="template-card">
   <div class="template-info">
     <h3>{{ template.name }}</h3>
-    <p>{{ template.exerciseCount }} Ejercicios</p>
+    <p>{{ template.exercises?.length ?? 0 }} Ejercicios</p>
   </div>
   <div class="template-actions">
     <button class="action-button view" (click)="viewTemplate(template)">

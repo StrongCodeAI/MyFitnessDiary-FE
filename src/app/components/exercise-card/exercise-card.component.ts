@@ -27,17 +27,19 @@ export class ExerciseCardComponent {
     this.selectedChange.emit({ exercise: this.exercise, selected });
   }
 
+  onSerieChange(event: Event, i: number, property: 'reps' | 'weight') {
+    this.templateExercise.sets[i][property] = parseInt((event.target as HTMLElement).textContent || '0');
+  }
+
   addSerie() {
     this.templateExercise.sets.push({
       reps: defaultProperties.reps,
       weight: defaultProperties.weight,
       time: defaultProperties.time
     });
-    console.log(this.templateExercise);
   }
 
   removeSerie(i: number) {
     this.templateExercise.sets.splice(i, 1);
-    console.log(this.templateExercise);
   }
 } 

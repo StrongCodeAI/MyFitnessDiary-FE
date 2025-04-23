@@ -19,20 +19,20 @@
         <div class="exercise-serie" *ngFor="let serie of [].constructor(templateExercise.sets.length); let i = index">
             <p class="exercise-serie-number">Serie {{ i + 1 }}</p>
             <p>
-                <span class="exercise-serie-reps">{{ templateExercise.sets[i].reps }}</span>
+                <span class="exercise-serie-reps" contenteditable="true" [textContent]="templateExercise.sets[i].reps"
+                    (blur)="onSerieChange($event, i, 'reps')"></span>
                 <span class="exercise-serie-reps-unit">Reps</span>
             </p>
             <p>
-                <span class="exercise-serie-weight">{{ templateExercise.sets[i].weight }}</span>
+                <span class="exercise-serie-weight" contenteditable="true" [textContent]="templateExercise.sets[i].weight"
+                    (blur)="onSerieChange($event, i, 'weight')"></span>
                 <span class="exercise-serie-weight-unit">kg/lbs</span>
             </p>
             <p class="exercise-serie-add-serie">
-                <app-minus-circle-icon *ngIf="templateExercise.sets.length != 1" (click)="removeSerie(i)"></app-minus-circle-icon>
+                <app-minus-circle-icon *ngIf="templateExercise.sets.length != 1"
+                    (click)="removeSerie(i)"></app-minus-circle-icon>
                 <app-plus-circle-icon *ngIf="i === templateExercise.sets.length - 1"
-                (click)="addSerie()"
-                ></app-plus-circle-icon>
-                <!--<app-plus-circle-icon *ngIf="i === properties.sets - 1; else emptySpace"></app-plus-circle-icon>
-                ng-template #emptySpace><div style="width: 20px; height: 20px;"></div></ng-template>-->
+                    (click)="addSerie()"></app-plus-circle-icon>
             </p>
         </div>
     </div>
