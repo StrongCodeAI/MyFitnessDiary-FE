@@ -12,13 +12,6 @@
                 <app-carrier-icon *ngIf="!selected"></app-carrier-icon>
                 <app-trashcan-icon *ngIf="selected"></app-trashcan-icon>
             </div>
-            <div class="exercise-serie-icons-space">
-                <div class="exercise-empty-space" *ngIf="!selected"></div>
-                <div class="exercise-serie-icon" *ngIf="selected">
-                    <app-plus-circle-icon></app-plus-circle-icon>
-                    <app-minus-circle-icon></app-minus-circle-icon>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -32,6 +25,14 @@
             <p>
                 <span class="exercise-serie-weight">{{ properties.weight }}</span>
                 <span class="exercise-serie-weight-unit">kg/lbs</span>
+            </p>
+            <p class="exercise-serie-add-serie">
+                <app-minus-circle-icon (click)="removeSerie()"></app-minus-circle-icon>
+                <app-plus-circle-icon *ngIf="i === properties.sets - 1"
+                (click)="addSerie()"
+                ></app-plus-circle-icon>
+                <!--<app-plus-circle-icon *ngIf="i === properties.sets - 1; else emptySpace"></app-plus-circle-icon>
+                ng-template #emptySpace><div style="width: 20px; height: 20px;"></div></ng-template>-->
             </p>
         </div>
     </div>

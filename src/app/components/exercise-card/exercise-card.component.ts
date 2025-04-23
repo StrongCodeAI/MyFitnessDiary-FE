@@ -23,4 +23,12 @@ export class ExerciseCardComponent {
   onSelectedChange(selected: boolean) {
     this.selectedChange.emit({ exercise: this.exercise, selected });
   }
+
+  addSerie() {
+    this.properties.sets++;
+  }
+
+  removeSerie() {
+    this.properties.sets--;
+  }
 } 
