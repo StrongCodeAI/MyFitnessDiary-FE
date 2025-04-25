@@ -1,32 +1,34 @@
 <div class="template-edit-container" *ngIf="!isLoading">
   <div class="template-form">
-    <h2 id="editable-title" class="editable-title" contenteditable="true" (blur)="onTitleBlur($event)"
+    <!-- Template name -->
+    <h2 id="editable-title" class="editable-title" [attr.contenteditable]="!isViewMode" (blur)="onTitleBlur($event)"
       [textContent]="template.name" data-placeholder="Nueva Plantilla">
     </h2>
+    <!-- Template properties -->
     <p> Elige tus valores por defecto:</p>
     <div class="template-properties">
       <div class="property">
         <span class="property-label">Series:</span>
-        <span class="property-value" contenteditable="true" (blur)="onPropertyChange($event, 'sets')"
+        <span class="property-value" [attr.contenteditable]="!isViewMode" (blur)="onPropertyChange($event, 'sets')"
           [textContent]="template.defaultProperties.sets">
         </span>
       </div>
       <div class="property">
         <span class="property-label">Repeticiones:</span>
-        <span class="property-value" contenteditable="true" (blur)="onPropertyChange($event, 'reps')"
+        <span class="property-value" [attr.contenteditable]="!isViewMode" (blur)="onPropertyChange($event, 'reps')"
           [textContent]="template.defaultProperties.reps">
         </span>
       </div>
       <div class="property">
         <span class="property-label">Tiempo:</span>
-        <span class="property-value" contenteditable="true" (blur)="onPropertyChange($event, 'time')"
+        <span class="property-value" [attr.contenteditable]="!isViewMode" (blur)="onPropertyChange($event, 'time')"
           [textContent]="template.defaultProperties.time">
         </span>
         <span class="unit">min</span>
       </div>
     </div>
 
-    <div class="search-container">
+    <div class="search-container" *ngIf="!isViewMode">
       <input type="text" class="search-input" placeholder="Buscar ejercicios..." (input)="onSearch($event)">
     </div>
 
@@ -38,10 +40,11 @@
       [templateExercise]="getTemplateExercise(exercise)"
       [selected]="isExerciseSelected(exercise)"
       [defaultProperties]="template.defaultProperties"
+      [isViewMode]="isViewMode"
       (selectedChange)="onSelectedChange($event)"></app-exercise-card>
   </div>
 
-  <button class="floating-save-button" (click)="saveTemplate()">
+  <button class="floating-save-button" *ngIf="!isViewMode" (click)="saveTemplate()">
     <app-save-icon></app-save-icon>
     <span>Guardar</span>
   </button>

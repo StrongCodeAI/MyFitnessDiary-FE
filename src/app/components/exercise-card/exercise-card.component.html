@@ -7,7 +7,7 @@
             <h3>{{ exercise.name }}</h3>
             <p>{{ exercise.tags.join(', ') }}</p>
         </div>
-        <div class="exercise-selection">
+        <div class="exercise-selection" *ngIf="!isViewMode">
             <div class="exercise-selected" (click)="onSelectedChange(!selected)">
                 <app-carrier-icon *ngIf="!selected"></app-carrier-icon>
                 <app-trashcan-icon *ngIf="selected"></app-trashcan-icon>
@@ -19,16 +19,16 @@
         <div class="exercise-serie" *ngFor="let serie of [].constructor(templateExercise.sets.length); let i = index">
             <p class="exercise-serie-number">Serie {{ i + 1 }}</p>
             <p>
-                <span class="exercise-serie-reps" contenteditable="true" [textContent]="templateExercise.sets[i].reps"
+                <span class="exercise-serie-reps" [attr.contenteditable]="!isViewMode" [textContent]="templateExercise.sets[i].reps"
                     (blur)="onSerieChange($event, i, 'reps')"></span>
                 <span class="exercise-serie-reps-unit">Reps</span>
             </p>
             <p>
-                <span class="exercise-serie-weight" contenteditable="true" [textContent]="templateExercise.sets[i].weight"
+                <span class="exercise-serie-weight" [attr.contenteditable]="!isViewMode" [textContent]="templateExercise.sets[i].weight"
                     (blur)="onSerieChange($event, i, 'weight')"></span>
                 <span class="exercise-serie-weight-unit">kg/lbs</span>
             </p>
-            <p class="exercise-serie-add-serie">
+            <p class="exercise-serie-add-serie" *ngIf="!isViewMode">
                 <app-minus-circle-icon *ngIf="templateExercise.sets.length != 1"
                     (click)="removeSerie(i)"></app-minus-circle-icon>
                 <app-plus-circle-icon *ngIf="i === templateExercise.sets.length - 1"

@@ -43,6 +43,8 @@ export class TemplateEditComponent implements OnInit {
   };
   isEditMode: boolean = false;
   isLoading: boolean = true;
+
+  isViewMode = false;
  
   constructor(
     private headerService: HeaderService,

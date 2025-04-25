@@ -42,8 +42,7 @@ export class TemplateListComponent implements OnInit {
   }
 
   viewTemplate(template: Template) {
-    // TODO: Implementar la visualización de la plantilla
-    console.log('Ver plantilla:', template);
+    this.router.navigate(['/template-view', template.id]);
   }
 
   editTemplate(template: Template) {

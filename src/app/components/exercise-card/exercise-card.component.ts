@@ -20,6 +20,7 @@ export class ExerciseCardComponent {
   @Input() templateExercise!: TemplateExercise;
   @Input() selected: boolean = false;
   @Input() defaultProperties = defaultProperties;
+  @Input() isViewMode: boolean = false;
 
   @Output() selectedChange = new EventEmitter<{ exercise: DbExercise, selected: boolean }>();
 

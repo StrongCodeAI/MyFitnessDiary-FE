@@ -9,6 +9,7 @@ import { ResetPasswordComponent } from './pages/login/reset-password/reset-passw
 import { PricingComponent } from './pages/pricing/pricing.component';
 import { TemplateListComponent } from './pages/template/list/template-list.component';
 import { TemplateEditComponent } from './pages/template/edit/template-edit.component';
+import { TemplateViewComponent } from './pages/template/edit/template-view.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ export const routes: Routes = [
   { path: 'template-list', component: TemplateListComponent },
   { path: 'template-edit', component: TemplateEditComponent },
   { path: 'template-edit/:id', component: TemplateEditComponent },
+  { path: 'template-view/:id', component: TemplateViewComponent },
   { path: 'trainer', component: TrainerComponent },
   { path: 'pricing', component: PricingComponent }
 ];
