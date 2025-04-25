@@ -106,6 +106,37 @@
   margin-top: 10px;
 }
 
+.floating-save-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 75%;
+  transition: background-color 0.3s;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.floating-save-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.floating-save-button app-save-icon {
+  color: white;
+}
+
 
 
 

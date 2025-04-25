@@ -40,5 +40,10 @@
       [defaultProperties]="template.defaultProperties"
       (selectedChange)="onSelectedChange($event)"></app-exercise-card>
   </div>
+
+  <button class="floating-save-button" (click)="saveTemplate()">
+    <app-save-icon></app-save-icon>
+    <span>Guardar</span>
+  </button>
 </div>
 <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

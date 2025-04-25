@@ -33,7 +33,7 @@ export class TemplateListComponent implements OnInit {
     this.loadTemplates();
   }
 
-  private loadTemplates(): void {
+  loadTemplates(): void {
     this.dataManagementService.getTemplates().subscribe({
       next: (templates) => {
         this.templates = templates;
@@ -63,8 +63,15 @@ export class TemplateListComponent implements OnInit {
   confirmDelete() {
     if (this.templateToDelete) {
       console.log('Eliminando plantilla:', this.templateToDelete);
-      // TODO: Implementar la eliminación real de la plantilla
-      this.closeDeleteModal();
+      this.dataManagementService.deleteTemplate(this.templateToDelete.id).subscribe({
+        next: () => {
+          this.loadTemplates();
+          this.closeDeleteModal();
+        },
+        error: (error) => {
+          console.error('Error al eliminar la plantilla:', error);
+        }
+      });
     }
   }
 

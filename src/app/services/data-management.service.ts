@@ -181,4 +181,14 @@ export class DataManagementService {
     return of(this.mockExercises);
   } 
 
+  createTemplate(template: Template): Observable<Template> {
+    this.mockTemplates.push(template);
+    return of(template);
+  }
+
+  deleteTemplate(templateId: string): Observable<void> {
+    this.mockTemplates = this.mockTemplates.filter(t => t.id !== templateId);
+    return of(undefined);
+  }
+
 } 

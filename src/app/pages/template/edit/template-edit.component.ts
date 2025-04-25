@@ -12,6 +12,7 @@ import { LoadingSpinnerComponent } from '../../../components/loading-spinner/loa
 import { ExerciseCardComponent } from '../../../components/exercise-card/exercise-card.component';
 import { of, Subject } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
+import { SaveIconComponent } from '../../../components/icons/save-icon.component';
 
 export const defaultProperties = {
   'sets': 1,
@@ -23,7 +24,7 @@ export const defaultProperties = {
 @Component({
   selector: 'app-template-edit',
   standalone: true,
-  imports: [CommonModule, FormsModule, LoadingSpinnerComponent, ExerciseCardComponent],
+  imports: [CommonModule, FormsModule, LoadingSpinnerComponent, ExerciseCardComponent, SaveIconComponent],
   templateUrl: './template-edit.component.html',
   styleUrls: ['./template-edit.component.css']
 })
@@ -149,8 +150,7 @@ export class TemplateEditComponent implements OnInit {
       // TODO: Implementar la actualización de la plantilla
       console.log('Actualizando plantilla:', this.template);
     } else {
-      // TODO: Implementar la creación de la plantilla
-      console.log('Creando nueva plantilla:', this.template);
+      this.dataManagementService.createTemplate(this.template);
     }
     this.router.navigate(['/template-list']);
   }
@@ -190,5 +190,6 @@ export class TemplateEditComponent implements OnInit {
       this.selectedExercises = this.selectedExercises.filter(e => e.id !== exercise.id);
     }
     console.log(this.selectedExercises);
-  }
+  } 
+  
 } 
