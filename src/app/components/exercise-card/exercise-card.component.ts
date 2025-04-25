@@ -5,7 +5,7 @@ import { CarrierIconComponent } from "../icons/carrier-icon.component";
 import { TrashcanIconComponent } from "../icons/trashcan-icon.component";
 import { PlusCircleIconComponent } from '../icons/plus-circle-icon.component';
 import { MinusCircleIconComponent } from '../icons/minus-circle-icon.component';
-import { defaultProperties } from '../../pages/template/edit/template-edit.component';
+import { defaultProperties } from '../../pages/template/edit&view/template-edit.component';
 import { TemplateExercise } from '../../models/template.interface';
  
 @Component({

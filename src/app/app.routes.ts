@@ -8,8 +8,8 @@ import { RegistrationComponent } from './pages/login/registration/registration.c
 import { ResetPasswordComponent } from './pages/login/reset-password/reset-password.component';
 import { PricingComponent } from './pages/pricing/pricing.component';
 import { TemplateListComponent } from './pages/template/list/template-list.component';
-import { TemplateEditComponent } from './pages/template/edit/template-edit.component';
-import { TemplateViewComponent } from './pages/template/edit/template-view.component';
+import { TemplateEditComponent } from './pages/template/edit&view/template-edit.component';
+import { TemplateViewComponent } from './pages/template/edit&view/template-view.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
