@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { HeaderService } from '../../../services/header.service';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,11 @@ import { AuthService } from '../../../services/auth.service';
 export class LoginComponent {
   constructor(
     private authService: AuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private headerService: HeaderService
+  ) {
+    this.authService.currentUserSubject.next(null);
+  }
 
   onLogin() {
     // Simulamos un usuario autenticado

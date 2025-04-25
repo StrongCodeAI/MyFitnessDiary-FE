@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PasswordService } from '../../../services/password.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -19,8 +20,11 @@ export class ResetPasswordComponent implements OnDestroy {
 
   constructor(
     private router: Router,
-    private passwordService: PasswordService
-  ) {}
+    private passwordService: PasswordService,
+    private authService: AuthService
+  ) {
+    this.authService.currentUserSubject.next(null);
+  }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {

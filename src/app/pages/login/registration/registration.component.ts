@@ -2,6 +2,7 @@ import { Component, HostListener, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PasswordService } from '../../../services/password.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -16,7 +17,9 @@ export class RegistrationComponent implements OnDestroy {
   passwordErrors: string[] = [];
   showPasswordErrors = false;
 
-  constructor(private passwordService: PasswordService) {}
+  constructor(private passwordService: PasswordService, private authService: AuthService) {
+    this.authService.currentUserSubject.next(null);
+  }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
