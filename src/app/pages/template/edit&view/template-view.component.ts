@@ -74,7 +74,7 @@ export class TemplateViewComponent implements OnInit {
         this.template = tpl;
         // Exercises to display
         this.selectedExercises = tpl.exercises!;
-        this.filteredExercises = this.selectedExercises;
+        this.filteredExercises = this.selectedExercises.sort((a, b) => a.name.localeCompare(b.name));
         this.isLoading = false;
       },
       error: (err) => {

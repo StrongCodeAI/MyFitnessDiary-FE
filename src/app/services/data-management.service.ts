@@ -178,7 +178,7 @@ export class DataManagementService {
   ]
 
   getExercises(): Observable<DbExercise[]> {
-    return of(this.mockExercises);
+    return of(this.mockExercises.sort((a, b) => a.name.localeCompare(b.name)));
   } 
 
   createTemplate(template: Template): Observable<Template> {
