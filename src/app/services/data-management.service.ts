@@ -191,4 +191,13 @@ export class DataManagementService {
     return of(undefined);
   }
 
+  updateTemplate(template: Template): Observable<Template> {
+    const index = this.mockTemplates.findIndex(t => t.id === template.id);
+    if (index !== -1) {
+      this.mockTemplates[index] = template;
+    }
+    return of(template);
+  }
+
+
 } 

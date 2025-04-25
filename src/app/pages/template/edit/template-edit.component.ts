@@ -93,6 +93,8 @@ export class TemplateEditComponent implements OnInit {
         // If the template is not null, the template is being edited
         if (template) {
           console.log('Plantilla cargada:', template);
+          this.template = template;
+          this.selectedExercises = this.template.exercises!;
         }
         this.isLoading = false;
       },
@@ -147,12 +149,24 @@ export class TemplateEditComponent implements OnInit {
 
   saveTemplate() {
     if (this.isEditMode) {
-      // TODO: Implementar la actualización de la plantilla
-      console.log('Actualizando plantilla:', this.template);
+      this.dataManagementService.updateTemplate(this.template).subscribe({
+        next: () => {
+          this.router.navigate(['/template-list']);
+        },
+        error: (error) => {
+          console.error('Error al actualizar la plantilla:', error);
+        }
+      });
     } else {
-      this.dataManagementService.createTemplate(this.template);
+      this.dataManagementService.createTemplate(this.template).subscribe({
+        next: () => {
+          this.router.navigate(['/template-list']);
+        },
+        error: (error) => {
+          console.error('Error al crear la plantilla:', error);
+        }
+      });
     }
-    this.router.navigate(['/template-list']);
   }
 
   onSearch(event: Event) {
@@ -187,9 +201,8 @@ export class TemplateEditComponent implements OnInit {
       this.selectedExercises.push(templateExercise);
     } else {
       // If the exercise is not selected, it is removed from the selectedExercises array
-      this.selectedExercises = this.selectedExercises.filter(e => e.id !== exercise.id);
+      this.selectedExercises.splice(this.selectedExercises.findIndex(e => e.id === exercise.id), 1);
     }
-    console.log(this.selectedExercises);
   } 
   
 } 
