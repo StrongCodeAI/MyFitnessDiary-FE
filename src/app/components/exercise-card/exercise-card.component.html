@@ -29,6 +29,7 @@
                 <span class="exercise-serie-weight-unit">kg/lbs</span>
             </p>
             <p class="exercise-serie-add-serie" *ngIf="!isViewMode">
+                <span class="icon-placeholder" *ngIf="templateExercise.sets.length - 1 !== i"></span>
                 <app-minus-circle-icon *ngIf="templateExercise.sets.length != 1"
                     (click)="removeSerie(i)"></app-minus-circle-icon>
                 <app-plus-circle-icon *ngIf="i === templateExercise.sets.length - 1"
