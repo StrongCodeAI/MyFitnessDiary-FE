@@ -199,5 +199,12 @@ export class DataManagementService {
     return of(template);
   }
 
+  mockMarkedDays: string[] = ['2025-05-01', '2025-05-02', '2025-04-20'];
+
+  getMarkedDaysForMonth(year: number, month: number): Observable<string[]> {
+    return of(this.mockMarkedDays);
+  }
+
+
 
 } 

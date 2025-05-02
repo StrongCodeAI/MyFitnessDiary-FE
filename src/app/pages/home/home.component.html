@@ -1,7 +1,6 @@
 <div class="home-container">
   <!-- Sección de bienvenida -->
-  <div class="welcome-section">
-    <h1>¡Bienvenido a MyFitnessDiary!</h1>
-    <p>Tu diario personal de entrenamiento y progreso</p>
+  <div class="calendar-section">
+    <full-calendar *ngIf="!isLoading" [options]="calendarOptions"></full-calendar>
   </div>
 </div>
