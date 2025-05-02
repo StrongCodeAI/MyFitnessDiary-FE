@@ -1,0 +1,12 @@
+<div class="workout-card">
+  <div class="workout-card-header">
+    <span>{{ workout?.date | date: 'EEE, dd MMM - HH:mm' : '' : 'es' }}</span>
+  </div>
+  <div class="workout-card-image" style="background-image: url('assets/images/workout1.webp');">
+    <div class="workout-card-overlay">
+      <span class="workout-card-info">
+        {{ workout?.name }} | {{ workout?.duration }} min | {{ workout?.exercises?.length }} ejercicios
+      </span>
+    </div>
+  </div>
+</div>

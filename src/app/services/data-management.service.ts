@@ -273,8 +273,8 @@ export class DataManagementService {
     {
       id: uuidv4(),
       name: 'Entrenamiento de 30 minutos',
-      date: '2025-05-01',
-      duration: 30,
+      date: '2025-05-01 22:15',
+      duration: 33,
       exercises: [
         {
           id: this.mockExercises[0].id,
@@ -339,8 +339,8 @@ export class DataManagementService {
     {
       id: uuidv4(),
       name: 'Entrenamiento de 45 minutos',
-      date: '2025-05-02',
-      duration: 45,
+      date: '2025-05-02 07:23',
+      duration: 118,
       exercises: [
         {
           id: this.mockExercises[2].id,

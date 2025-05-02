@@ -1,7 +1,6 @@
 <div class="diary-container">
   <!-- Sección de título -->
-  <div class="title-section">
-    <h1>Mi Diario de Entrenamiento</h1>
-    <p>Registra y sigue tu progreso</p>
+  <div class="workout-section" *ngIf="workouts.length > 0">
+    <app-workout-card *ngFor="let workout of workouts" [workout]="workout"></app-workout-card>
   </div>
 </div> 

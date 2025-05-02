@@ -1,0 +1,44 @@
+.workout-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin: 8px 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    border-color: color-mix(in srgb, var(--primary-color) 50%, transparent);;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.workout-card-header {
+    padding: 10px;
+    font-size: 1rem;
+    color: #222;
+}
+
+.workout-card-image {
+    height: 110px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-end;
+    opacity: 0.8;
+}
+
+.workout-card-overlay {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: color-mix(in srgb, var(--quaternary-color) 50%, transparent);
+    color: #fff;
+    padding: 4px 16px;
+    border-radius: 0 0 8px 8px;
+    font-weight: 400;
+}
+
+.workout-card-info {
+    font-size: 0.8rem;
+    display: flex;
+    padding: 4px 16px;
+}
