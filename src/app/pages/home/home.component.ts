@@ -1,6 +1,6 @@
 import { Component, OnInit, Type, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { HeaderService } from '../../services/header.service';
 import { NavMenuService } from '../../services/nav-menu.service';
 import { FullCalendarModule } from '@fullcalendar/angular';
@@ -52,7 +52,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private headerService: HeaderService,
     private navMenuService: NavMenuService,
-    private dataManagerService: DataManagementService
+    private dataManagerService: DataManagementService,
+    private router: Router
   ) {
     this.headerService.setHomeHeader();
     this.navMenuService.setNavMenuVisibility(true);
@@ -89,5 +90,9 @@ export class HomeComponent implements OnInit {
       this.markDays(dates);
       this.isLoading = false;
     });
+  }
+
+  startNewWorkout() {
+    this.router.navigate(['/workout']);
   }
 }

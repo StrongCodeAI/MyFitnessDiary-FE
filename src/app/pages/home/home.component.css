@@ -5,7 +5,7 @@
 }
 
 .calendar-section {
-  padding: 20px;
+  padding: 0px 20px 20px 20px;
 }
 
 /* Estilos del header */
@@ -102,7 +102,9 @@
   display: flex;
   overflow-x: auto;
   gap: 32px; /* Más separación entre tarjetas */
-  padding: 10px 0 100px 0;
+  padding: 10px;
+  padding-top: 5%;
+  padding-bottom: 20%;
   scrollbar-width: none;
   -ms-overflow-style: none;
   justify-content: flex-start;
@@ -164,3 +166,32 @@
   letter-spacing: 0.5px;
 }
 
+.create-workout-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Botón de iniciar nuevo entrenamiento */
+.create-workout-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 90%;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  max-width: 300px;
+}
+
+.create-workout-button:hover {
+  background-color: var(--secondary-color);
+}

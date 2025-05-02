@@ -4,9 +4,16 @@
     <full-calendar *ngIf="!isLoading" [options]="calendarOptions"></full-calendar>
   </div>
 
+  <!-- Botón de iniciar nuevo entrenamiento -->
+  <div class="create-workout-button-container">
+    <button class="create-workout-button" (click)="startNewWorkout()">
+      Iniciar Nuevo Entrenamiento
+    </button>
+  </div>
+
   <!-- Carrusel de consejos -->
   <div class="advises-section">
-    <h2>Consejos deportivos</h2>
+    <!-- <h2>Consejos deportivos</h2> -->
     <div class="advises-carousel">
       <div class="advice-card" *ngFor="let advise of advises">
         <div class="advice-icon">
