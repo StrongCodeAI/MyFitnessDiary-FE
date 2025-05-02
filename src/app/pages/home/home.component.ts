@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Type, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderService } from '../../services/header.service';
@@ -8,11 +8,16 @@ import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { DataManagementService } from '../../services/data-management.service';
+import { AiAdvise } from '../../models/advise.interface';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, FullCalendarModule],
+  imports: [
+    CommonModule, 
+    RouterModule, 
+    FullCalendarModule,
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   encapsulation: ViewEncapsulation.None
@@ -42,6 +47,7 @@ export class HomeComponent implements OnInit {
   };
 
   isLoading = true;
+  advises: AiAdvise[] = [];
 
   constructor(
     private headerService: HeaderService,
@@ -56,6 +62,14 @@ export class HomeComponent implements OnInit {
     // Al iniciar, pedimos los días marcados del mes actual
     const today = new Date();
     this.fetchMarkedDaysForMonth(today.getFullYear(), today.getMonth() + 1);
+    this.loadAdvises();
+  }
+
+  loadAdvises() {
+    this.dataManagerService.getAiAdvises().subscribe(advises => {
+      // Ordenar los consejos por fecha (más recientes primero)
+      this.advises = advises.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    });
   }
 
   markDays(dates: string[]) {

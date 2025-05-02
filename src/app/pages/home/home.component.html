@@ -3,4 +3,20 @@
   <div class="calendar-section">
     <full-calendar *ngIf="!isLoading" [options]="calendarOptions"></full-calendar>
   </div>
+
+  <!-- Carrusel de consejos -->
+  <div class="advises-section">
+    <h2>Consejos deportivos</h2>
+    <div class="advises-carousel">
+      <div class="advice-card" *ngFor="let advise of advises">
+        <div class="advice-icon">
+          <ng-container *ngComponentOutlet="advise.icon"></ng-container>
+        </div>
+        <div class="advice-content">
+          <div class="advice-text">{{advise.advise}}</div>
+          <div class="advice-date">{{advise.date | date:'dd/MM/yy'}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

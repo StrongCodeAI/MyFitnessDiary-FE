@@ -4,6 +4,13 @@ import { Trainer } from '../models/trainer.interface';
 import { Template } from '../models/template.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { DbExercise } from '../models/dbExercise.interface';
+import { AiAdvise } from '../models/advise.interface';
+import { Advice1IconComponent } from '../components/icons/advice1.component';
+import { Advice2IconComponent } from '../components/icons/advice2.component';
+import { Advice3IconComponent } from '../components/icons/advice3.component';
+import { Advice5IconComponent } from '../components/icons/advice5.component';
+import { Advice4IconComponent } from '../components/icons/advice4.component';
+import { Advice6IconComponent } from '../components/icons/advice6.component';
 
 @Injectable({
   providedIn: 'root'
@@ -205,6 +212,59 @@ export class DataManagementService {
     return of(this.mockMarkedDays);
   }
 
+  mockIcons: any[] = [
+    Advice1IconComponent,
+    Advice2IconComponent,
+    Advice3IconComponent,
+    Advice4IconComponent,
+    Advice5IconComponent,
+    Advice6IconComponent
+  ]
 
+  mockAiAdvises: AiAdvise[] = [
+    {
+      icon: this.mockIcons[Math.floor(Math.random() * this.mockIcons.length)],
+      date: '2025-05-01',
+      advise: '¡No te olvides de tu cita con el entrenador! 💪🏼'
+    },
+    {
+      icon: this.mockIcons[Math.floor(Math.random() * this.mockIcons.length)],
+      date: '2025-04-20',
+      advise: 'Recuerda estirar después del entrenamiento para evitar lesiones'
+    },
+    {
+      icon: this.mockIcons[Math.floor(Math.random() * this.mockIcons.length)],
+      date: '2025-04-15',
+      advise: 'Parece que hace tiempo que no entrenas espalda. ¿Por qué no intentarlo hoy?'
+    },
+    {
+      icon: this.mockIcons[Math.floor(Math.random() * this.mockIcons.length)],
+      date: '2025-04-10',
+      advise: 'Llevas 3 días seguidos entrenando, ¡quizás sea momento de un descanso!'
+    },
+    {
+      icon: this.mockIcons[Math.floor(Math.random() * this.mockIcons.length)],
+      date: '2025-04-05',
+      advise: 'Estás muy cerca de alcazar tu objetivo, sigue luchando'
+    },
+    {
+      icon: this.mockIcons[Math.floor(Math.random() * this.mockIcons.length)],
+      date: '2025-03-30',
+      advise: 'Hidrátate bien antes, durante y después del ejercicio'
+    },
+    {
+      icon: this.mockIcons[Math.floor(Math.random() * this.mockIcons.length)],
+      date: '2025-03-25',
+      advise: 'Mantén una postura correcta en cada ejercicio'
+    },
+    {
+      icon: this.mockIcons[Math.floor(Math.random() * this.mockIcons.length)],
+      date: '2025-03-20',
+      advise: 'Respira de forma controlada durante el esfuerzo'
+    }
+  ]
 
+  getAiAdvises(): Observable<AiAdvise[]> {
+    return of(this.mockAiAdvises);
+  }
 } 
