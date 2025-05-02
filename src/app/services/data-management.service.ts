@@ -11,6 +11,7 @@ import { Advice3IconComponent } from '../components/icons/advice3.component';
 import { Advice5IconComponent } from '../components/icons/advice5.component';
 import { Advice4IconComponent } from '../components/icons/advice4.component';
 import { Advice6IconComponent } from '../components/icons/advice6.component';
+import { Workout } from '../models/workout.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -186,7 +187,7 @@ export class DataManagementService {
 
   getExercises(): Observable<DbExercise[]> {
     return of(this.mockExercises.sort((a, b) => a.name.localeCompare(b.name)));
-  } 
+  }
 
   createTemplate(template: Template): Observable<Template> {
     this.mockTemplates.push(template);
@@ -267,4 +268,145 @@ export class DataManagementService {
   getAiAdvises(): Observable<AiAdvise[]> {
     return of(this.mockAiAdvises);
   }
-} 
+
+  mockWorkouts: Workout[] = [
+    {
+      id: uuidv4(),
+      name: 'Entrenamiento de 30 minutos',
+      date: '2025-05-01',
+      duration: 30,
+      exercises: [
+        {
+          id: this.mockExercises[0].id,
+          name: this.mockExercises[0].name,
+          type: this.mockExercises[0].type,
+          tags: this.mockExercises[0].tags,
+          image: this.mockExercises[0].image,
+          sets: [{
+            reps: 10,
+            weight: 10,
+            time: 30
+          }]
+        },
+        {
+          id: this.mockExercises[1].id,
+          name: this.mockExercises[1].name,
+          type: this.mockExercises[1].type,
+          tags: this.mockExercises[1].tags,
+          image: this.mockExercises[1].image,
+          sets: [
+            {
+              reps: 10,
+              weight: 10,
+              time: 30
+            },
+            {
+              reps: 10,
+              weight: 10,
+              time: 30
+            },
+            {
+              reps: 10,
+              weight: 10,
+              time: 30
+            }
+          ]
+        },
+        {
+          id: this.mockExercises[1].id,
+          name: this.mockExercises[1].name,
+          type: this.mockExercises[1].type,
+          tags: this.mockExercises[1].tags,
+          image: this.mockExercises[1].image,
+          sets: [{
+            reps: 10,
+            weight: 10,
+            time: 30
+          },
+          {
+            reps: 10,
+            weight: 10,
+            time: 30
+          },
+          {
+            reps: 10,
+            weight: 10,
+            time: 30
+          }]
+        }
+      ]
+    },
+    {
+      id: uuidv4(),
+      name: 'Entrenamiento de 45 minutos',
+      date: '2025-05-02',
+      duration: 45,
+      exercises: [
+        {
+          id: this.mockExercises[2].id,
+          name: this.mockExercises[2].name,
+          type: this.mockExercises[2].type,
+          tags: this.mockExercises[2].tags,
+          image: this.mockExercises[2].image,
+          sets: [{
+            reps: 10,
+            weight: 10,
+            time: 30
+          },
+          {
+            reps: 10,
+            weight: 10,
+            time: 30
+          }]
+        },
+        {
+          id: this.mockExercises[3].id,
+          name: this.mockExercises[3].name,
+          type: this.mockExercises[3].type,
+          tags: this.mockExercises[3].tags,
+          image: this.mockExercises[3].image,
+          sets: [{
+            reps: 10,
+            weight: 10,
+            time: 30
+          },
+          {
+            reps: 10,
+            weight: 10,
+            time: 30
+          }]
+        },
+        {
+          id: this.mockExercises[4].id,
+          name: this.mockExercises[4].name,
+          type: this.mockExercises[4].type,
+          tags: this.mockExercises[4].tags,
+          image: this.mockExercises[4].image,
+          sets: [{
+            reps: 10,
+            weight: 10,
+            time: 30
+          },
+          {
+            reps: 10,
+            weight: 10,
+            time: 30
+          }]
+        }
+      ]
+    }
+  ]
+  
+  getWorkouts(): Observable<Workout[]> {
+    return of(this.mockWorkouts);
+  }
+
+  getWorkoutById(workoutId: string): Observable<Workout> {
+    const workout = this.mockWorkouts.find(w => w.id === workoutId);
+    if (!workout) {
+      throw new Error(`No se encontró el entrenamiento con ID: ${workoutId}`);
+    }
+    return of(workout);
+  }
+  
+}
