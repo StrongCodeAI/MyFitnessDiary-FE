@@ -1,6 +1,15 @@
 <div class="diary-container">
-  <!-- Sección de título -->
-  <div class="workout-section" *ngIf="workouts.length > 0">
-    <app-workout-card *ngFor="let workout of workouts" [workout]="workout"></app-workout-card>
+  <!-- Filtro de fechas -->
+  <div class="diary-filter-bar">
+    <span class="diary-filter-label">Desde:</span>
+    <input type="date" class="diary-filter-date-input" [value]="fromDate" (change)="onFromDateChange($event)">
+    <span class="diary-filter-label">Hasta:</span>
+    <input type="date" class="diary-filter-date-input" [value]="toDate" (change)="onToDateChange($event)">
+    <app-graphic-icon></app-graphic-icon>
   </div>
-</div> 
+  
+  <!-- Sección de título -->
+  <div class="workout-section" *ngIf="filteredWorkouts.length > 0">
+    <app-workout-card *ngFor="let workout of filteredWorkouts" [workout]="workout"></app-workout-card>
+  </div>
+</div>
